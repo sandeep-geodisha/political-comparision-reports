@@ -72,7 +72,12 @@ export function engagementRatePerFollowerPct(p: Politician): number {
   return (totalEngagement(p) / followers) * 100;
 }
 
-/** Builds a merged daily series across the given politicians for a given metric bucket. */
+/**
+ * Builds a merged daily series across the given politicians for a given metric bucket.
+ * Only sums platforms whose daily breakdown is reliable for that metric (see
+ * isDailySeriesReliable) — some platform/metric combinations are only reported
+ * as period totals by the source, with no trustworthy daily split.
+ */
 export function buildDailySeries(
   politicians: Politician[],
   metric: "posts" | "engagement" | "views" | "videoViews"
@@ -82,11 +87,47 @@ export function buildDailySeries(
   return dates.map((date, i) => {
     const row: Record<string, string | number> = { date };
     for (const p of politicians) {
-      const perPlatform = PLATFORMS.map((pl) => p[metric].dailyByPlatform[pl]?.[i] ?? 0);
+      const perPlatform = reliablePlatformsFor(p, metric).map(
+        (pl) => p[metric].dailyByPlatform[pl]?.[i] ?? 0
+      );
       row[p.id] = sum(perPlatform);
     }
     return row;
   });
+}
+
+const TOTAL_LABEL: Record<"posts" | "engagement" | "views" | "videoViews", string> = {
+  posts: "Posts",
+  engagement: "Engagement",
+  views: "Views",
+  videoViews: "Video Views",
+};
+
+/**
+ * The source export's daily-by-day breakdown doesn't always account for the
+ * full period total on every platform (a known gap in the underlying data,
+ * not a parsing bug — see scripts/import_politicians.py's cross-check).
+ * A platform's daily series is "reliable" only when it sums to the
+ * platform's reported total for that metric.
+ */
+export function isDailySeriesReliable(
+  p: Politician,
+  metric: "posts" | "engagement" | "views" | "videoViews",
+  platform: Platform
+): boolean {
+  const daily = p[metric].dailyByPlatform[platform];
+  if (!daily) return true;
+  const total = p[metric].totalByPlatform[platform]?.[TOTAL_LABEL[metric]];
+  if (typeof total !== "number") return true;
+  return sum(daily) === total;
+}
+
+/** Platforms whose daily breakdown for this metric can be trusted (sums to the reported total). */
+export function reliablePlatformsFor(
+  p: Politician,
+  metric: "posts" | "engagement" | "views" | "videoViews"
+): Platform[] {
+  return PLATFORMS.filter((pl) => isDailySeriesReliable(p, metric, pl));
 }
 
 export function formatCompactNumber(n: number): string {

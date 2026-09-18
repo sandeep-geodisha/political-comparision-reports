@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import {
   PLATFORM_LABELS,
   PLATFORMS,
@@ -7,12 +6,11 @@ import {
   formatCompactNumber,
   getPdfSupplement,
   getPoliticians,
-  totalEngagement,
+  isDailySeriesReliable,
   totalFollowers,
-  totalPosts,
-  totalVideoViews,
   totalViews,
 } from "@/lib/data";
+import { buildComparisonNarrative, fieldContentPillars } from "@/lib/analytics";
 import { colorForId } from "@/lib/colors";
 import { Avatar } from "@/components/Avatar";
 import { Card } from "@/components/Card";
@@ -20,7 +18,11 @@ import { ChangeBadge } from "@/components/ChangeBadge";
 import { PoliticianPicker } from "@/components/PoliticianPicker";
 import { TrendChart } from "@/components/charts/TrendChart";
 import { BarComparisonChart } from "@/components/charts/BarComparisonChart";
-import { RadarComparisonChart } from "@/components/charts/RadarComparisonChart";
+import { InsightsCard } from "@/components/InsightsCard";
+import { FieldRankingsCard } from "@/components/FieldRankingsCard";
+import { MomentumEfficiencySection } from "@/components/MomentumEfficiencySection";
+import { PlatformStrategySection } from "@/components/PlatformStrategySection";
+import { ContentStrategyComparisonSection } from "@/components/ContentStrategyComparisonSection";
 
 export default async function ComparePage({
   searchParams,
@@ -50,6 +52,15 @@ export default async function ComparePage({
     ...row,
     date: String(row.date).slice(0, 6),
   }));
+  const viewsUnreliableByPolitician = selected
+    .map((p) => ({
+      name: p.name,
+      platforms: PLATFORMS.filter(
+        (pl) =>
+          (p.posts.totalByPlatform[pl]?.Posts ?? 0) > 0 && !isDailySeriesReliable(p, "views", pl)
+      ),
+    }))
+    .filter((x) => x.platforms.length > 0);
 
   const trendSeriesDefs = selected.map((p) => ({ key: p.id, label: p.name, color: colors[p.id] }));
   const barSeriesDefs = selected.map((p) => ({ key: p.id, label: p.name, color: colors[p.id] }));
@@ -73,21 +84,8 @@ export default async function ComparePage({
     },
   ];
 
-  const maxFollowers = Math.max(...selected.map(totalFollowers), 1);
-  const maxEngagement = Math.max(...selected.map(totalEngagement), 1);
-  const maxPosts = Math.max(...selected.map(totalPosts), 1);
-  const maxViews = Math.max(...selected.map(totalViews), 1);
-  const maxVideoViews = Math.max(...selected.map(totalVideoViews), 1);
-  const maxRate = Math.max(...selected.map(avgEngagementRate), 1);
-
-  const radarData = [
-    { metric: "Followers", ...Object.fromEntries(selected.map((p) => [p.id, Math.round((totalFollowers(p) / maxFollowers) * 100)])) },
-    { metric: "Engagement", ...Object.fromEntries(selected.map((p) => [p.id, Math.round((totalEngagement(p) / maxEngagement) * 100)])) },
-    { metric: "Posts", ...Object.fromEntries(selected.map((p) => [p.id, Math.round((totalPosts(p) / maxPosts) * 100)])) },
-    { metric: "Views", ...Object.fromEntries(selected.map((p) => [p.id, Math.round((totalViews(p) / maxViews) * 100)])) },
-    { metric: "Video Views", ...Object.fromEntries(selected.map((p) => [p.id, Math.round((totalVideoViews(p) / maxVideoViews) * 100)])) },
-    { metric: "Eng. Rate", ...Object.fromEntries(selected.map((p) => [p.id, Math.round((avgEngagementRate(p) / maxRate) * 100)])) },
-  ];
+  const narrative = selected.length > 1 ? buildComparisonNarrative(selected) : [];
+  const fieldPillars = selected.length > 1 ? fieldContentPillars(selected) : [];
 
   const kpiRows = [
     { key: "Posts", label: "Posts published", hint: "Total posts published across all platforms this period" },
@@ -140,6 +138,19 @@ export default async function ComparePage({
         </Card>
       ) : (
         <>
+          {selected.length > 1 && (
+            <>
+              <InsightsCard
+                title="Analyst summary"
+                subtitle="Social media performance only — reach, engagement and content strategy. Not a prediction of electoral standing."
+                summary={narrative}
+                observations={[]}
+              />
+
+              <FieldRankingsCard politicians={selected} colors={colors} />
+            </>
+          )}
+
           <Card
             title="Side-by-side profile"
             subtitle="Each metric's badge shows the change vs. the previous period of the same length."
@@ -150,11 +161,11 @@ export default async function ComparePage({
               <table className="w-full min-w-[480px] text-sm">
                 <thead>
                   <tr className="border-b border-border bg-surface-alt text-left text-[11px] uppercase tracking-wide text-muted">
-                    <th className="sticky left-0 z-10 bg-surface-alt px-4 py-3 font-semibold backdrop-blur">
+                    <th className="sticky left-0 z-10 min-w-[140px] whitespace-nowrap bg-surface-alt px-4 py-3.5 font-semibold backdrop-blur">
                       Metric
                     </th>
                     {selected.map((p) => (
-                      <th key={p.id} className="px-4 py-3 font-semibold">
+                      <th key={p.id} className="min-w-[110px] px-4 py-3.5 font-semibold">
                         <span className="inline-flex items-center gap-2 normal-case text-foreground">
                           <Avatar name={p.name} color={colors[p.id]} size={22} />
                           <span className="truncate">{p.name}</span>
@@ -171,14 +182,14 @@ export default async function ComparePage({
                     >
                       <td
                         title={row.hint}
-                        className="sticky left-0 z-10 bg-inherit px-4 py-3 font-medium text-muted"
+                        className="sticky left-0 z-10 min-w-[140px] whitespace-nowrap bg-inherit px-4 py-3.5 font-medium text-muted"
                       >
                         {row.label}
                       </td>
                       {selected.map((p) => {
                         const kpi = p.kpis[row.key];
                         return (
-                          <td key={p.id} className="px-4 py-3">
+                          <td key={p.id} className="px-4 py-3.5">
                             <div className="flex flex-wrap items-center gap-2">
                               <span className="font-semibold text-foreground">
                                 {kpi ? formatCompactNumber(kpi.current) : "—"}
@@ -193,12 +204,12 @@ export default async function ComparePage({
                   <tr className="border-b border-border/70 bg-brand-light/30">
                     <td
                       title="Combined follower count across all platforms"
-                      className="sticky left-0 z-10 bg-brand-light/60 px-4 py-3 font-semibold text-foreground backdrop-blur"
+                      className="sticky left-0 z-10 min-w-[140px] whitespace-nowrap bg-brand-light/60 px-4 py-3.5 font-semibold text-foreground backdrop-blur"
                     >
                       Total followers
                     </td>
                     {selected.map((p) => (
-                      <td key={p.id} className="px-4 py-3 font-bold text-foreground">
+                      <td key={p.id} className="px-4 py-3.5 font-bold text-foreground">
                         {formatCompactNumber(totalFollowers(p))}
                       </td>
                     ))}
@@ -206,12 +217,12 @@ export default async function ComparePage({
                   <tr className="border-b border-border/70">
                     <td
                       title="Total content views across all platforms this period"
-                      className="sticky left-0 z-10 bg-inherit px-4 py-3 font-semibold text-foreground"
+                      className="sticky left-0 z-10 min-w-[140px] whitespace-nowrap bg-inherit px-4 py-3.5 font-semibold text-foreground"
                     >
                       Total views
                     </td>
                     {selected.map((p) => (
-                      <td key={p.id} className="px-4 py-3 font-bold text-foreground">
+                      <td key={p.id} className="px-4 py-3.5 font-bold text-foreground">
                         {formatCompactNumber(totalViews(p))}
                       </td>
                     ))}
@@ -219,12 +230,12 @@ export default async function ComparePage({
                   <tr className="bg-brand-light/30">
                     <td
                       title="Average engagement rate across platforms — engagement as a share of followers"
-                      className="sticky left-0 z-10 bg-brand-light/60 px-4 py-3 font-semibold text-foreground backdrop-blur"
+                      className="sticky left-0 z-10 min-w-[140px] whitespace-nowrap bg-brand-light/60 px-4 py-3.5 font-semibold text-foreground backdrop-blur"
                     >
                       Avg. engagement rate
                     </td>
                     {selected.map((p) => (
-                      <td key={p.id} className="px-4 py-3 font-bold text-brand-dark">
+                      <td key={p.id} className="px-4 py-3.5 font-bold text-brand-dark">
                         {avgEngagementRate(p).toFixed(2)}%
                       </td>
                     ))}
@@ -234,25 +245,27 @@ export default async function ComparePage({
             </div>
           </Card>
 
-          {selected.length > 1 && (
-            <Card
-              title="Overall performance radar"
-              subtitle="Each axis normalized to the top performer (100%) among selected politicians"
-            >
-              <RadarComparisonChart data={radarData} series={barSeriesDefs} />
-            </Card>
-          )}
+          {selected.length > 1 && <MomentumEfficiencySection politicians={selected} colors={colors} />}
 
           <Card title="Followers by platform" subtitle="Compare audience distribution across channels">
             <BarComparisonChart data={followersByPlatformData} xKey="platform" series={barSeriesDefs} />
           </Card>
+
+          {selected.length > 1 && <PlatformStrategySection politicians={selected} colors={colors} />}
 
           {hasEmv && (
             <Card
               title="Earned media value"
               subtitle="Estimated equivalent ad-spend value of this period's organic performance"
             >
-              <BarComparisonChart data={emvData} xKey="metric" series={barSeriesDefs} horizontal height={140} />
+              <BarComparisonChart
+                data={emvData}
+                xKey="metric"
+                series={barSeriesDefs}
+                horizontal
+                height={Math.max(140, selected.length * 44 + 60)}
+                maxBarSize={28}
+              />
             </Card>
           )}
 
@@ -265,8 +278,33 @@ export default async function ComparePage({
           </Card>
 
           <Card title="Views over time" subtitle="Daily views, combined across channels">
+            {viewsUnreliableByPolitician.length > 0 && (
+              <div className="mb-4 flex items-start gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2.5 text-xs text-amber-800">
+                <svg
+                  className="mt-0.5 h-3.5 w-3.5 shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path d="M12 9v4M12 17h.01M10.29 3.86l-8.18 14.18A2 2 0 004 21h16a2 2 0 001.89-2.96L13.71 3.86a2 2 0 00-3.42 0z" />
+                </svg>
+                <span>
+                  Daily view data isn&rsquo;t fully reported by the source for some platforms, so
+                  they&rsquo;re excluded here to avoid understating totals:{" "}
+                  {viewsUnreliableByPolitician
+                    .map((x) => `${x.name} (${x.platforms.map((pl) => PLATFORM_LABELS[pl]).join(", ")})`)
+                    .join("; ")}
+                  . See Total Views for accurate figures.
+                </span>
+              </div>
+            )}
             <TrendChart data={viewsSeries} series={trendSeriesDefs} />
           </Card>
+
+          {selected.length > 1 && (
+            <ContentStrategyComparisonSection pillars={fieldPillars} colors={colors} />
+          )}
 
           <div>
             <h2 className="mb-1 text-lg font-bold text-foreground sm:text-xl">Per-channel breakdown</h2>
@@ -285,34 +323,33 @@ export default async function ComparePage({
                 const hasData = rows.some((r) => r.followers || r.posts || r.engagement);
                 if (!hasData) return null;
                 return (
-                  <Card key={pl} title={PLATFORM_LABELS[pl]} padded={false} className="overflow-hidden">
-                    <div className="grid grid-cols-[minmax(0,1fr)_3.5rem_3rem_4rem] gap-x-3 gap-y-2.5 px-4 pb-4 pt-1 sm:px-5">
-                      <span className="col-span-1" />
-                      <span className="text-right text-[10px] font-semibold uppercase tracking-wide text-muted">
-                        Followers
-                      </span>
-                      <span className="text-right text-[10px] font-semibold uppercase tracking-wide text-muted">
-                        Posts
-                      </span>
-                      <span className="text-right text-[10px] font-semibold uppercase tracking-wide text-muted">
-                        Engagement
-                      </span>
+                  <Card key={pl} title={PLATFORM_LABELS[pl]}>
+                    <div className="flex flex-col divide-y divide-border/70">
                       {rows.map((r) => (
-                        <Fragment key={r.id}>
-                          <span className="flex min-w-0 items-center gap-2 text-sm font-medium text-foreground">
+                        <div key={r.id} className="flex flex-col gap-2 py-3 first:pt-0 last:pb-0">
+                          <span className="flex min-w-0 items-center gap-2 text-sm font-semibold text-foreground">
                             <Avatar name={r.name} color={colors[r.id]} size={22} />
                             <span className="truncate">{r.name}</span>
                           </span>
-                          <span className="self-center text-right text-sm font-semibold text-foreground">
-                            {formatCompactNumber(r.followers)}
-                          </span>
-                          <span className="self-center text-right text-sm font-semibold text-foreground">
-                            {r.posts}
-                          </span>
-                          <span className="self-center text-right text-sm font-semibold text-foreground">
-                            {formatCompactNumber(r.engagement)}
-                          </span>
-                        </Fragment>
+                          <div className="grid grid-cols-3 gap-2 rounded-lg bg-surface-alt/70 px-3 py-2 text-center">
+                            <div>
+                              <p className="text-sm font-bold text-foreground">
+                                {formatCompactNumber(r.followers)}
+                              </p>
+                              <p className="text-[10px] uppercase tracking-wide text-muted">Followers</p>
+                            </div>
+                            <div className="border-x border-border">
+                              <p className="text-sm font-bold text-foreground">{r.posts}</p>
+                              <p className="text-[10px] uppercase tracking-wide text-muted">Posts</p>
+                            </div>
+                            <div>
+                              <p className="text-sm font-bold text-foreground">
+                                {formatCompactNumber(r.engagement)}
+                              </p>
+                              <p className="text-[10px] uppercase tracking-wide text-muted">Engagement</p>
+                            </div>
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </Card>

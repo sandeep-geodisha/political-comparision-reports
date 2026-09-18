@@ -3,16 +3,20 @@ import { Card } from "@/components/Card";
 export function InsightsCard({
   summary,
   observations,
+  title = "Key insights",
+  subtitle = "Auto-generated summary of this period's performance",
 }: {
   summary: string[];
   observations: string[];
+  title?: string;
+  subtitle?: string;
 }) {
   if (!summary.length && !observations.length) return null;
 
   return (
     <Card
-      title="Key insights"
-      subtitle="Auto-generated summary of this period's performance"
+      title={title}
+      subtitle={subtitle}
       className="border-brand/20 bg-gradient-to-br from-brand-light/40 via-surface to-surface"
     >
       <div className="flex flex-col gap-2.5 text-sm leading-relaxed text-foreground/90">

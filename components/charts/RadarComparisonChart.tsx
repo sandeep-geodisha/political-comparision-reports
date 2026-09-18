@@ -28,9 +28,9 @@ export function RadarComparisonChart({
   height?: number;
 }) {
   return (
-    <div style={{ width: "100%", height }}>
+    <div className="mx-auto" style={{ width: "100%", maxWidth: height * 1.3, height }}>
       <ResponsiveContainer>
-        <RadarChart data={data} outerRadius="62%" margin={{ top: 8, right: 24, bottom: 8, left: 24 }}>
+        <RadarChart data={data} outerRadius="68%" margin={{ top: 8, right: 24, bottom: 8, left: 24 }}>
           <PolarGrid stroke="#eef0f5" />
           <PolarAngleAxis dataKey="metric" tick={{ fontSize: 10, fill: "#475569" }} />
           <PolarRadiusAxis tick={{ fontSize: 9, fill: "#94a3b8" }} angle={30} axisLine={false} />

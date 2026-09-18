@@ -22,7 +22,9 @@ export function ContentPillarsSection({ pillars }: { pillars: ContentPillar[] })
           xKey="name"
           series={[{ key: "posts", label: "Posts", color: "#6366f1" }]}
           horizontal
-          height={Math.max(160, pillars.length * 56)}
+          height={Math.max(180, pillars.length * 64)}
+          yAxisWidth={104}
+          yAxisMaxChars={14}
         />
         <div className="mt-4 overflow-x-auto rounded-xl border border-border">
           <table className="w-full min-w-[520px] text-sm">

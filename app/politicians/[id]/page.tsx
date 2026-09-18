@@ -8,6 +8,8 @@ import {
   getPdfSupplement,
   getPolitician,
   getPoliticians,
+  isDailySeriesReliable,
+  reliablePlatformsFor,
 } from "@/lib/data";
 import { colorForId } from "@/lib/colors";
 import { Avatar } from "@/components/Avatar";
@@ -65,13 +67,26 @@ export default async function PoliticianPage({
     return row;
   });
 
+  const viewsReliablePlatforms = reliablePlatformsFor(politician, "views").filter(
+    (pl) => (politician.posts.totalByPlatform[pl]?.Posts ?? 0) > 0
+  );
   const viewsSeries = politician.posts.dates.map((date, i) => {
     const row: Record<string, string | number> = { date: date.slice(0, 6) };
-    for (const pl of PLATFORMS) {
+    for (const pl of viewsReliablePlatforms) {
       row[pl] = politician.views.dailyByPlatform[pl]?.[i] ?? 0;
     }
     return row;
   });
+  const viewsSeriesDefs = viewsReliablePlatforms.map((pl) => ({
+    key: pl,
+    label: PLATFORM_LABELS[pl],
+    color: PLATFORM_COLORS[pl],
+  }));
+  const viewsUnreliablePlatforms = PLATFORMS.filter(
+    (pl) =>
+      (politician.posts.totalByPlatform[pl]?.Posts ?? 0) > 0 &&
+      !isDailySeriesReliable(politician, "views", pl)
+  );
 
   const platformSeries = PLATFORMS.filter(
     (pl) => (politician.posts.totalByPlatform[pl]?.Posts ?? 0) > 0
@@ -281,7 +296,26 @@ export default async function PoliticianPage({
       </Card>
 
       <Card title="Views over time" subtitle="Daily views per channel">
-        <TrendChart data={viewsSeries} series={platformSeries} />
+        {viewsUnreliablePlatforms.length > 0 && (
+          <div className="mb-4 flex items-start gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2.5 text-xs text-amber-800">
+            <svg
+              className="mt-0.5 h-3.5 w-3.5 shrink-0"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path d="M12 9v4M12 17h.01M10.29 3.86l-8.18 14.18A2 2 0 004 21h16a2 2 0 001.89-2.96L13.71 3.86a2 2 0 00-3.42 0z" />
+            </svg>
+            <span>
+              {viewsUnreliablePlatforms.map((pl) => PLATFORM_LABELS[pl]).join(" and ")} daily
+              view data isn&rsquo;t fully reported by the source for this period, so{" "}
+              {viewsUnreliablePlatforms.length > 1 ? "they are" : "it is"} excluded from this
+              chart. See the accurate totals in the KPIs and platform breakdown above.
+            </span>
+          </div>
+        )}
+        <TrendChart data={viewsSeries} series={viewsSeriesDefs} />
       </Card>
 
       <div>

@@ -8,6 +8,19 @@ Usage:
 Re-run this whenever a new or updated .xlsx report is dropped into docs/.
 Each source file must follow the same fixed-row-layout export template
 used by the three existing reports (see docs/*.xlsx).
+
+Validation: every numeric field is checked to actually be a number (not a
+blank cell or "N/A" string) and fails loudly if not — see require_number()
+and parse_daily_series(). After parsing, cross_check_daily_sums_match_totals()
+verifies each platform's daily breakdown sums to its reported period total.
+Posts/Engagement mismatches are treated as a parsing bug and hard-fail the
+import; Views/Video Views mismatches are only warned about, since
+Socialinsider's own export is known to sometimes report a platform's views
+only as a period total with no reliable daily split (e.g. Facebook views are
+consistently all-zero in the daily table despite a large non-zero total).
+The app excludes those specific platform/metric combinations from daily
+trend charts rather than plot misleading data — see
+lib/data.ts:isDailySeriesReliable.
 """
 
 import glob
@@ -88,7 +101,18 @@ def parse_daily_series(ws, header_row):
         name = cell(ws, r, 1)
         if not name or not isinstance(name, str):
             break
-        vals = [cell(ws, r, c) or 0 for c in range(2, 2 + len(dates))]
+        raw_vals = [cell(ws, r, c) for c in range(2, 2 + len(dates))]
+        vals = []
+        for i, v in enumerate(raw_vals):
+            if v is None:
+                vals.append(0)
+            elif isinstance(v, (int, float)):
+                vals.append(v)
+            else:
+                raise ValueError(
+                    f"Non-numeric daily value at row {r}, col {2 + i} "
+                    f"(platform={name!r}, date={dates[i]!r}): {v!r}"
+                )
         series[name.strip().lower()] = vals
         r += 1
     return dates, series
@@ -99,6 +123,12 @@ def find_section_row(ws, title, max_row):
         if str(cell(ws, r, 1) or "").strip() == title:
             return r
     raise ValueError(f"Section '{title}' not found")
+
+
+def require_number(value, context):
+    if not isinstance(value, (int, float)):
+        raise ValueError(f"Expected a number for {context}, got {value!r}")
+    return value
 
 
 def parse_workbook(path):
@@ -121,10 +151,10 @@ def parse_workbook(path):
             {
                 "handle": handle,
                 "platform": PLATFORM_NAMES.get(str(platform_code).strip().lower(), platform_code),
-                "followers": cell(ws, r, 3),
-                "engagement": cell(ws, r, 4),
-                "engagementRatePerFollower": cell(ws, r, 5),
-                "posts": cell(ws, r, 6),
+                "followers": require_number(cell(ws, r, 3), f"profiles row {r} followers"),
+                "engagement": require_number(cell(ws, r, 4), f"profiles row {r} engagement"),
+                "engagementRatePerFollower": require_number(cell(ws, r, 5), f"profiles row {r} rate"),
+                "posts": require_number(cell(ws, r, 6), f"profiles row {r} posts"),
             }
         )
         r += 1
@@ -138,8 +168,8 @@ def parse_workbook(path):
         if not name:
             break
         kpis[name.strip()] = {
-            "current": cell(ws, r, 2),
-            "previous": cell(ws, r, 3),
+            "current": require_number(cell(ws, r, 2), f"KPI {name!r} current"),
+            "previous": require_number(cell(ws, r, 3), f"KPI {name!r} previous"),
             "changePct": parse_pct(cell(ws, r, 4)),
         }
         r += 1
@@ -239,6 +269,53 @@ def parse_workbook(path):
     }
 
 
+def cross_check_daily_sums_match_totals(parsed, source_file):
+    """
+    Sanity check: for each platform, the sum of the daily distribution series
+    should equal the corresponding "Total X by Platform" figure. This catches
+    row-offset or mis-mapped parsing bugs immediately instead of silently
+    producing self-consistent-looking but wrong output.
+
+    Posts and Engagement are hard-failed on mismatch: in every report seen so
+    far these always reconcile exactly, so a mismatch there means a parsing
+    bug. Views and Video Views are only warned on: Socialinsider's own daily
+    breakdown for these two metrics is known to sometimes omit a platform
+    entirely (reported only in the period total, e.g. Facebook views) or
+    under-report it — this is a genuine gap in the source export, not
+    something this script can recover. The app surfaces this to users by
+    excluding unreliable platforms from daily trend charts
+    (see lib/data.ts:isDailySeriesReliable) rather than plotting misleading
+    zero/partial lines.
+    """
+    hard_fail_checks = [("posts", "Posts"), ("engagement", "Engagement")]
+    warn_only_checks = [("views", "Views"), ("videoViews", "Video Views")]
+
+    def mismatches(bucket, total_label):
+        daily = parsed[bucket]["dailyByPlatform"]
+        totals = parsed[bucket]["totalByPlatform"]
+        found = []
+        for platform, series in daily.items():
+            expected = totals.get(platform, {}).get(total_label)
+            actual = sum(series)
+            if expected is not None and actual != expected:
+                found.append(f"{bucket}.{platform} daily sum ({actual}) != total ({expected})")
+        return found
+
+    errors = []
+    for bucket, total_label in hard_fail_checks:
+        errors.extend(mismatches(bucket, total_label))
+    if errors:
+        raise ValueError(f"{source_file}: cross-check failed:\n  " + "\n  ".join(errors))
+
+    warnings = []
+    for bucket, total_label in warn_only_checks:
+        warnings.extend(mismatches(bucket, total_label))
+    if warnings:
+        print(f"  NOTE: {source_file} has known source-data gaps (daily total won't sum to reported total):")
+        for w in warnings:
+            print(f"    - {w}")
+
+
 # Filenames look like: Brand_<Politician_Name>_<start>_<end>_<hash> 1.xlsx
 FILENAME_RE = re.compile(r"^Brand_(.+?)_\d{1,2}_[A-Za-z]{3}_\d{4}_\d{1,2}_[A-Za-z]{3}_\d{4}_")
 
@@ -256,18 +333,30 @@ def main():
         raise SystemExit(f"No .xlsx files found in {DOCS_DIR}")
 
     politicians = []
+    ids_seen = {}
     for path in files:
         name = name_from_filename(path)
+        source_file = os.path.basename(path)
         parsed = parse_workbook(path)
+        cross_check_daily_sums_match_totals(parsed, source_file)
+
+        pid = slugify(name)
+        if pid in ids_seen:
+            raise ValueError(
+                f"Duplicate politician id {pid!r}: {ids_seen[pid]!r} and {source_file!r} "
+                "both slugify to the same id. Rename one file."
+            )
+        ids_seen[pid] = source_file
+
         politicians.append(
             {
-                "id": slugify(name),
+                "id": pid,
                 "name": name,
-                "sourceFile": os.path.basename(path),
+                "sourceFile": source_file,
                 **parsed,
             }
         )
-        print(f"Parsed {name!r} from {os.path.basename(path)}")
+        print(f"Parsed {name!r} from {source_file} (cross-checks passed)")
 
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     with open(OUT_PATH, "w") as f:
