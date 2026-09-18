@@ -1,0 +1,2101 @@
+{
+  "politicians": [
+    {
+      "id": "adanki-dayakar",
+      "name": "Adanki Dayakar",
+      "sourceFile": "Brand_Adanki_Dayakar_20_Aug_2026_18_Sep_2026_db15 1.xlsx",
+      "dateRange": "August,20 2026 - September,18 2026",
+      "profiles": [
+        {
+          "handle": "Addanki Dayakar",
+          "platform": "twitter",
+          "followers": 7255,
+          "engagement": 924,
+          "engagementRatePerFollower": 12.736044107512061,
+          "posts": 23
+        },
+        {
+          "handle": "Dr Addanki Dayakar",
+          "platform": "facebook",
+          "followers": 45763,
+          "engagement": 13990,
+          "engagementRatePerFollower": 30.570548259510957,
+          "posts": 47
+        },
+        {
+          "handle": "dr.addankidayakar",
+          "platform": "instagram",
+          "followers": 6886,
+          "engagement": 2316,
+          "engagementRatePerFollower": 33.63345919256462,
+          "posts": 23
+        }
+      ],
+      "kpis": {
+        "Posts": {
+          "current": 93,
+          "previous": 71,
+          "changePct": 30.99
+        },
+        "Engagement": {
+          "current": 17230,
+          "previous": 9611,
+          "changePct": 79.27
+        },
+        "Fans Count": {
+          "current": 59904,
+          "previous": 59315,
+          "changePct": 0.99
+        },
+        "Avg Posts / Day": {
+          "current": 3.2,
+          "previous": 2.3,
+          "changePct": 39.13
+        },
+        "Avg Engagement": {
+          "current": 438.53,
+          "previous": 361.36,
+          "changePct": 21.35
+        },
+        "Total Video Views": {
+          "current": 192213,
+          "previous": 69165,
+          "changePct": 177.91
+        },
+        "Total Impressions": {
+          "current": 583367,
+          "previous": 289106,
+          "changePct": 101.78
+        }
+      },
+      "audience": {
+        "followersByPlatform": {
+          "facebook": {
+            "Followers": 45763,
+            "Followers diff. percent vs previous period": 0.73
+          },
+          "instagram": {
+            "Followers": 6886,
+            "Followers diff. percent vs previous period": 3.53
+          },
+          "twitter": {
+            "Followers": 7255,
+            "Followers diff. percent vs previous period": 0.3
+          }
+        },
+        "followersDiffByPlatform": {
+          "facebook": {
+            "Followers diff": 331,
+            "Followers growth percent vs previous period": 33000.0
+          },
+          "instagram": {
+            "Followers diff": 228,
+            "Followers growth percent vs previous period": 156.2
+          },
+          "twitter": {
+            "Followers diff": 22,
+            "Followers growth percent vs previous period": -26.7
+          }
+        }
+      },
+      "posts": {
+        "dates": [
+          "20 August 2026",
+          "21 August 2026",
+          "22 August 2026",
+          "23 August 2026",
+          "24 August 2026",
+          "25 August 2026",
+          "26 August 2026",
+          "27 August 2026",
+          "28 August 2026",
+          "29 August 2026",
+          "30 August 2026",
+          "31 August 2026",
+          "01 September 2026",
+          "02 September 2026",
+          "03 September 2026",
+          "04 September 2026",
+          "05 September 2026",
+          "06 September 2026",
+          "07 September 2026",
+          "08 September 2026",
+          "09 September 2026",
+          "10 September 2026",
+          "11 September 2026",
+          "12 September 2026",
+          "13 September 2026",
+          "14 September 2026",
+          "15 September 2026",
+          "16 September 2026",
+          "17 September 2026",
+          "18 September 2026"
+        ],
+        "dailyByPlatform": {
+          "facebook": [
+            1,
+            0,
+            3,
+            0,
+            0,
+            2,
+            1,
+            1,
+            3,
+            0,
+            0,
+            2,
+            0,
+            1,
+            0,
+            0,
+            3,
+            1,
+            3,
+            1,
+            2,
+            4,
+            3,
+            4,
+            1,
+            4,
+            1,
+            2,
+            3,
+            1
+          ],
+          "instagram": [
+            1,
+            0,
+            3,
+            0,
+            0,
+            2,
+            1,
+            1,
+            3,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            1,
+            0,
+            0,
+            2,
+            1
+          ],
+          "twitter": [
+            1,
+            0,
+            2,
+            0,
+            0,
+            2,
+            1,
+            1,
+            3,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            1,
+            0,
+            0,
+            4,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Posts": 47,
+            "Vs previous period": 56.67
+          },
+          "instagram": {
+            "Posts": 23,
+            "Vs previous period": 21.05
+          },
+          "twitter": {
+            "Posts": 23,
+            "Vs previous period": 4.55
+          }
+        }
+      },
+      "engagement": {
+        "dailyByPlatform": {
+          "facebook": [
+            102,
+            0,
+            1226,
+            0,
+            0,
+            686,
+            101,
+            138,
+            662,
+            0,
+            0,
+            164,
+            0,
+            529,
+            0,
+            0,
+            517,
+            1588,
+            877,
+            558,
+            867,
+            552,
+            473,
+            423,
+            271,
+            3571,
+            19,
+            430,
+            161,
+            75
+          ],
+          "instagram": [
+            23,
+            0,
+            230,
+            0,
+            0,
+            345,
+            24,
+            94,
+            390,
+            0,
+            0,
+            0,
+            19,
+            209,
+            0,
+            0,
+            0,
+            596,
+            0,
+            0,
+            0,
+            0,
+            262,
+            0,
+            0,
+            65,
+            0,
+            0,
+            48,
+            11
+          ],
+          "twitter": [
+            11,
+            0,
+            20,
+            0,
+            0,
+            205,
+            22,
+            26,
+            49,
+            0,
+            0,
+            0,
+            27,
+            184,
+            0,
+            0,
+            0,
+            155,
+            0,
+            0,
+            0,
+            0,
+            102,
+            0,
+            0,
+            37,
+            0,
+            0,
+            86,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Engagement": 13990,
+            "Vs previous period": 91.12
+          },
+          "instagram": {
+            "Engagement": 2316,
+            "Vs previous period": 25.66
+          },
+          "twitter": {
+            "Engagement": 924,
+            "Vs previous period": 106.25
+          }
+        },
+        "rateByPlatform": {
+          "facebook": {
+            "Engagement rate": 0.65,
+            "Vs previous period": 21.11
+          },
+          "instagram": {
+            "Engagement rate": 1.462,
+            "Vs previous period": 0.27
+          },
+          "twitter": {
+            "Engagement rate": 0.554,
+            "Vs previous period": 96.68
+          }
+        }
+      },
+      "views": {
+        "dailyByPlatform": {
+          "facebook": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "instagram": [
+            662,
+            0,
+            5062,
+            0,
+            0,
+            3948,
+            302,
+            1917,
+            4502,
+            0,
+            0,
+            0,
+            283,
+            1691,
+            0,
+            0,
+            0,
+            5089,
+            0,
+            0,
+            0,
+            0,
+            4303,
+            0,
+            0,
+            1116,
+            0,
+            0,
+            1133,
+            164
+          ],
+          "twitter": [
+            974,
+            0,
+            1723,
+            0,
+            0,
+            16323,
+            1750,
+            2098,
+            4040,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Views": 518707,
+            "Views diff. percent vs previous period": 113.58
+          },
+          "instagram": {
+            "Views": 30172,
+            "Views diff. percent vs previous period": 3.52
+          },
+          "twitter": {
+            "Views": 34488,
+            "Views diff. percent vs previous period": 101.74
+          }
+        }
+      },
+      "videoViews": {
+        "dailyByPlatform": {
+          "facebook": [
+            0,
+            0,
+            9027,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1072,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            10024,
+            12717,
+            17090,
+            10129,
+            12453,
+            11489,
+            0,
+            94639,
+            0,
+            10141,
+            1583,
+            0
+          ],
+          "instagram": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "twitter": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Video Views": 190364,
+            "Video views diff. percent vs previous period": 187.85
+          },
+          "instagram": {
+            "Video Views": 1849,
+            "Video views diff. percent vs previous period": -39
+          },
+          "twitter": {
+            "Video Views": 0,
+            "Video views diff. percent vs previous period": 0
+          }
+        }
+      },
+      "topPosts": [
+        {
+          "page": "Dr Addanki Dayakar",
+          "link": "https://www.facebook.com/reel/931713213341740/",
+          "date": "14 Sep",
+          "type": "reel",
+          "engagement": 2938,
+          "engagementRate": 6.42
+        },
+        {
+          "page": "Dr Addanki Dayakar",
+          "link": "https://www.facebook.com/1545272347612585/posts/1568003948672758",
+          "date": "06 Sep",
+          "type": "photo",
+          "engagement": 1588,
+          "engagementRate": 3.4701
+        },
+        {
+          "page": "Dr Addanki Dayakar",
+          "link": "https://www.facebook.com/reel/1852860319176652/",
+          "date": "09 Sep",
+          "type": "reel",
+          "engagement": 753,
+          "engagementRate": 1.6454
+        },
+        {
+          "page": "Dr Addanki Dayakar",
+          "link": "https://www.facebook.com/1545272347612585/posts/1554782246661595",
+          "date": "22 Aug",
+          "type": "photo",
+          "engagement": 718,
+          "engagementRate": 1.569
+        },
+        {
+          "page": "Dr Addanki Dayakar",
+          "link": "https://www.facebook.com/1545272347612585/posts/1556922333114253",
+          "date": "25 Aug",
+          "type": "album",
+          "engagement": 584,
+          "engagementRate": 1.2761
+        },
+        {
+          "page": "Dr.Addanki Dayakar",
+          "link": "https://www.instagram.com/p/Dc7y5y6CQuF/",
+          "date": "06 Sep",
+          "type": "carousel_album",
+          "engagement": 481,
+          "engagementRate": 6.9852
+        },
+        {
+          "page": "Dr.Addanki Dayakar",
+          "link": "https://www.instagram.com/p/DcccFrJidzR/",
+          "date": "25 Aug",
+          "type": "carousel_album",
+          "engagement": 328,
+          "engagementRate": 4.7633
+        },
+        {
+          "page": "Dr.Addanki Dayakar",
+          "link": "https://www.instagram.com/p/DckPabJiSZR/",
+          "date": "28 Aug",
+          "type": "carousel_album",
+          "engagement": 320,
+          "engagementRate": 4.6471
+        },
+        {
+          "page": "Dr.Addanki Dayakar",
+          "link": "https://www.instagram.com/p/DcxyMKOprWi/",
+          "date": "02 Sep",
+          "type": "image",
+          "engagement": 209,
+          "engagementRate": 3.0351
+        },
+        {
+          "page": "Addanki Dayakar",
+          "link": "https://www.twitter.com/ADayakarINC/status/2092059688020144398",
+          "date": "25 Aug",
+          "type": "photo",
+          "engagement": 195,
+          "engagementRate": 2.6878
+        },
+        {
+          "page": "Addanki Dayakar",
+          "link": "https://www.twitter.com/ADayakarINC/status/2095062133407125584",
+          "date": "02 Sep",
+          "type": "photo",
+          "engagement": 184,
+          "engagementRate": 2.5362
+        },
+        {
+          "page": "Dr.Addanki Dayakar",
+          "link": "https://www.instagram.com/p/DdJVPlJpg3x/",
+          "date": "11 Sep",
+          "type": "image",
+          "engagement": 119,
+          "engagementRate": 1.7281
+        }
+      ]
+    },
+    {
+      "id": "chamala-kiran-reddy",
+      "name": "Chamala Kiran Reddy",
+      "sourceFile": "Brand_Chamala_Kiran_Reddy_20_Aug_2026_18_Sep_2026_d85a 1.xlsx",
+      "dateRange": "August,20 2026 - September,18 2026",
+      "profiles": [
+        {
+          "handle": "chamalakirankumar",
+          "platform": "instagram",
+          "followers": 43791,
+          "engagement": 74256,
+          "engagementRatePerFollower": 169.56908953894637,
+          "posts": 83
+        },
+        {
+          "handle": "Chamala Kiran Reddy",
+          "platform": "facebook",
+          "followers": 124409,
+          "engagement": 27319,
+          "engagementRatePerFollower": 21.959022257232196,
+          "posts": 99
+        },
+        {
+          "handle": "Kiran Kumar Chamala",
+          "platform": "twitter",
+          "followers": 12967,
+          "engagement": 4505,
+          "engagementRatePerFollower": 34.742037479756306,
+          "posts": 53
+        }
+      ],
+      "kpis": {
+        "Posts": {
+          "current": 235,
+          "previous": 315,
+          "changePct": -25.4
+        },
+        "Engagement": {
+          "current": 106080,
+          "previous": 81110,
+          "changePct": 30.79
+        },
+        "Fans Count": {
+          "current": 181167,
+          "previous": 178702,
+          "changePct": 1.38
+        },
+        "Avg Posts / Day": {
+          "current": 7.9,
+          "previous": 10.4,
+          "changePct": -24.04
+        },
+        "Avg Engagement": {
+          "current": 1255.6,
+          "previous": 732.2,
+          "changePct": 71.48
+        },
+        "Total Video Views": {
+          "current": 2435317,
+          "previous": 3790381,
+          "changePct": -35.75
+        },
+        "Total Impressions": {
+          "current": 4284895,
+          "previous": 4880991,
+          "changePct": -12.21
+        }
+      },
+      "audience": {
+        "followersByPlatform": {
+          "facebook": {
+            "Followers": 124409,
+            "Followers diff. percent vs previous period": 0.41
+          },
+          "instagram": {
+            "Followers": 43791,
+            "Followers diff. percent vs previous period": 4.33
+          },
+          "twitter": {
+            "Followers": 12967,
+            "Followers diff. percent vs previous period": 1.06
+          }
+        },
+        "followersDiffByPlatform": {
+          "facebook": {
+            "Followers diff": 522,
+            "Followers growth percent vs previous period": 736.6
+          },
+          "instagram": {
+            "Followers diff": 1778,
+            "Followers growth percent vs previous period": 83.1
+          },
+          "twitter": {
+            "Followers diff": 123,
+            "Followers growth percent vs previous period": -21.7
+          }
+        }
+      },
+      "posts": {
+        "dates": [
+          "20 August 2026",
+          "21 August 2026",
+          "22 August 2026",
+          "23 August 2026",
+          "24 August 2026",
+          "25 August 2026",
+          "26 August 2026",
+          "27 August 2026",
+          "28 August 2026",
+          "29 August 2026",
+          "30 August 2026",
+          "31 August 2026",
+          "01 September 2026",
+          "02 September 2026",
+          "03 September 2026",
+          "04 September 2026",
+          "05 September 2026",
+          "06 September 2026",
+          "07 September 2026",
+          "08 September 2026",
+          "09 September 2026",
+          "10 September 2026",
+          "11 September 2026",
+          "12 September 2026",
+          "13 September 2026",
+          "14 September 2026",
+          "15 September 2026",
+          "16 September 2026",
+          "17 September 2026",
+          "18 September 2026"
+        ],
+        "dailyByPlatform": {
+          "facebook": [
+            2,
+            4,
+            1,
+            2,
+            2,
+            6,
+            5,
+            1,
+            5,
+            3,
+            5,
+            6,
+            6,
+            3,
+            0,
+            7,
+            9,
+            5,
+            3,
+            3,
+            3,
+            3,
+            0,
+            4,
+            0,
+            1,
+            1,
+            6,
+            2,
+            1
+          ],
+          "instagram": [
+            2,
+            3,
+            1,
+            1,
+            1,
+            4,
+            5,
+            1,
+            4,
+            4,
+            5,
+            4,
+            4,
+            3,
+            0,
+            8,
+            6,
+            4,
+            5,
+            2,
+            3,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            4,
+            2,
+            1
+          ],
+          "twitter": [
+            4,
+            2,
+            0,
+            1,
+            2,
+            3,
+            5,
+            2,
+            3,
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            7,
+            2,
+            2,
+            0,
+            1,
+            1,
+            4,
+            4,
+            1,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Posts": 99,
+            "Vs previous period": -22.05
+          },
+          "instagram": {
+            "Posts": 83,
+            "Vs previous period": -21.7
+          },
+          "twitter": {
+            "Posts": 53,
+            "Vs previous period": -35.37
+          }
+        }
+      },
+      "engagement": {
+        "dailyByPlatform": {
+          "facebook": [
+            329,
+            2378,
+            345,
+            228,
+            105,
+            708,
+            407,
+            67,
+            388,
+            326,
+            1017,
+            1595,
+            481,
+            295,
+            0,
+            429,
+            763,
+            697,
+            287,
+            295,
+            8256,
+            456,
+            0,
+            1623,
+            0,
+            256,
+            509,
+            4905,
+            119,
+            55
+          ],
+          "instagram": [
+            258,
+            1358,
+            239,
+            292,
+            473,
+            826,
+            559,
+            300,
+            739,
+            3202,
+            1479,
+            12476,
+            2923,
+            480,
+            0,
+            2441,
+            2278,
+            813,
+            5883,
+            1298,
+            5773,
+            12657,
+            0,
+            9380,
+            0,
+            136,
+            293,
+            6596,
+            1008,
+            96
+          ],
+          "twitter": [
+            196,
+            110,
+            0,
+            52,
+            101,
+            173,
+            260,
+            148,
+            173,
+            644,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1015,
+            176,
+            171,
+            0,
+            70,
+            74,
+            533,
+            558,
+            51,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Engagement": 27319,
+            "Vs previous period": -5.99
+          },
+          "instagram": {
+            "Engagement": 74256,
+            "Vs previous period": 56.06
+          },
+          "twitter": {
+            "Engagement": 4505,
+            "Vs previous period": 0.81
+          }
+        },
+        "rateByPlatform": {
+          "facebook": {
+            "Engagement rate": 0.222,
+            "Vs previous period": 20.11
+          },
+          "instagram": {
+            "Engagement rate": 2.043,
+            "Vs previous period": 91.03
+          },
+          "twitter": {
+            "Engagement rate": 0.656,
+            "Vs previous period": 54.33
+          }
+        }
+      },
+      "views": {
+        "dailyByPlatform": {
+          "facebook": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "instagram": [
+            3374,
+            72712,
+            3763,
+            10436,
+            10106,
+            59671,
+            8531,
+            4518,
+            110224,
+            139055,
+            76538,
+            346232,
+            160128,
+            7219,
+            0,
+            120355,
+            135056,
+            49382,
+            288965,
+            40103,
+            32338,
+            217374,
+            0,
+            268652,
+            0,
+            2655,
+            4781,
+            242224,
+            63467,
+            1926
+          ],
+          "twitter": [
+            16142,
+            9717,
+            0,
+            4393,
+            8776,
+            14985,
+            21986,
+            13526,
+            14962,
+            23087,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            14213,
+            0,
+            6041,
+            6578,
+            47298,
+            48274,
+            4347,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Views": 1055833,
+            "Views diff. percent vs previous period": -21.28
+          },
+          "instagram": {
+            "Views": 2479785,
+            "Views diff. percent vs previous period": -27.04
+          },
+          "twitter": {
+            "Views": 749277,
+            "Views diff. percent vs previous period": 431.62
+          }
+        }
+      },
+      "videoViews": {
+        "dailyByPlatform": {
+          "facebook": [
+            0,
+            44956,
+            0,
+            4228,
+            1819,
+            18248,
+            0,
+            0,
+            9,
+            27591,
+            20023,
+            96611,
+            18171,
+            0,
+            0,
+            9,
+            42992,
+            12481,
+            2412,
+            11062,
+            0,
+            11973,
+            0,
+            33807,
+            0,
+            0,
+            0,
+            104799,
+            7,
+            0
+          ],
+          "instagram": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "twitter": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            22735,
+            0,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Video Views": 451198,
+            "Video views diff. percent vs previous period": -31.89
+          },
+          "instagram": {
+            "Video Views": 1961384,
+            "Video views diff. percent vs previous period": -36.96
+          },
+          "twitter": {
+            "Video Views": 22735,
+            "Video views diff. percent vs previous period": 39.27
+          }
+        }
+      },
+      "topPosts": [
+        {
+          "page": "Kiran Kumar Chamala",
+          "link": "https://www.instagram.com/reel/DdHNyNIj5h5/",
+          "date": "10 Sep",
+          "type": "reel",
+          "engagement": 12586,
+          "engagementRate": 28.7411
+        },
+        {
+          "page": "Kiran Kumar Chamala",
+          "link": "https://www.instagram.com/p/DctKE4hmp16/",
+          "date": "31 Aug",
+          "type": "image",
+          "engagement": 10297,
+          "engagementRate": 23.514
+        },
+        {
+          "page": "Kiran Kumar Chamala",
+          "link": "https://www.instagram.com/reel/DdMCNz0E_oD/",
+          "date": "12 Sep",
+          "type": "reel",
+          "engagement": 9141,
+          "engagementRate": 20.8742
+        },
+        {
+          "page": "Chamala Kiran Reddy",
+          "link": "https://www.facebook.com/1119166483561877/posts/1577377871074067",
+          "date": "09 Sep",
+          "type": "photo",
+          "engagement": 7698,
+          "engagementRate": 6.1877
+        },
+        {
+          "page": "Kiran Kumar Chamala",
+          "link": "https://www.instagram.com/p/DdEGWSemiNk/",
+          "date": "09 Sep",
+          "type": "image",
+          "engagement": 5130,
+          "engagementRate": 11.7147
+        },
+        {
+          "page": "Kiran Kumar Chamala",
+          "link": "https://www.instagram.com/p/Dc-pym-H3Rz/",
+          "date": "07 Sep",
+          "type": "carousel_album",
+          "engagement": 4233,
+          "engagementRate": 9.6664
+        },
+        {
+          "page": "Chamala Kiran Reddy",
+          "link": "https://www.facebook.com/reel/1536539884822046/",
+          "date": "16 Sep",
+          "type": "reel",
+          "engagement": 4112,
+          "engagementRate": 3.3052
+        },
+        {
+          "page": "Chamala Kiran Reddy",
+          "link": "https://www.facebook.com/reel/1079102234601467/",
+          "date": "21 Aug",
+          "type": "reel",
+          "engagement": 2160,
+          "engagementRate": 1.7362
+        },
+        {
+          "page": "Chamala Kiran Reddy",
+          "link": "https://www.facebook.com/reel/1445462144179463/",
+          "date": "12 Sep",
+          "type": "reel",
+          "engagement": 1513,
+          "engagementRate": 1.2162
+        },
+        {
+          "page": "Chamala Kiran Reddy",
+          "link": "https://www.facebook.com/1119166483561877/posts/1568916305253557",
+          "date": "31 Aug",
+          "type": "photo",
+          "engagement": 777,
+          "engagementRate": 0.6246
+        },
+        {
+          "page": "Kiran Kumar Chamala",
+          "link": "https://www.twitter.com/kiran_chamala/status/2097648014689267804",
+          "date": "09 Sep",
+          "type": "photo",
+          "engagement": 439,
+          "engagementRate": 3.3855
+        },
+        {
+          "page": "Kiran Kumar Chamala",
+          "link": "https://www.twitter.com/kiran_chamala/status/2100179853815554369",
+          "date": "16 Sep",
+          "type": "video",
+          "engagement": 286,
+          "engagementRate": 2.2056
+        }
+      ]
+    },
+    {
+      "id": "vemula-veeresham",
+      "name": "Vemula Veeresham",
+      "sourceFile": "Brand_Vemula_Veeresham_20_Aug_2026_18_Sep_2026_cd15 1.xlsx",
+      "dateRange": "August,20 2026 - September,18 2026",
+      "profiles": [
+        {
+          "handle": "vemulaveeresham",
+          "platform": "instagram",
+          "followers": 56856,
+          "engagement": 143292,
+          "engagementRatePerFollower": 252.02617138032926,
+          "posts": 80
+        },
+        {
+          "handle": "Vemula Veeresham",
+          "platform": "twitter",
+          "followers": 187,
+          "engagement": 218,
+          "engagementRatePerFollower": 116.57754010695187,
+          "posts": 16
+        },
+        {
+          "handle": "Vemula Veeresham",
+          "platform": "facebook",
+          "followers": 38440,
+          "engagement": 23717,
+          "engagementRatePerFollower": 61.69875130072841,
+          "posts": 196
+        }
+      ],
+      "kpis": {
+        "Posts": {
+          "current": 292,
+          "previous": 192,
+          "changePct": 52.08
+        },
+        "Engagement": {
+          "current": 167227,
+          "previous": 103380,
+          "changePct": 61.76
+        },
+        "Fans Count": {
+          "current": 95483,
+          "previous": 92204,
+          "changePct": 3.56
+        },
+        "Avg Posts / Day": {
+          "current": 9.7,
+          "previous": 6.4,
+          "changePct": 51.56
+        },
+        "Avg Engagement": {
+          "current": 1925.78,
+          "previous": 1881.46,
+          "changePct": 2.36
+        },
+        "Total Video Views": {
+          "current": 3053877,
+          "previous": 1678010,
+          "changePct": 81.99
+        },
+        "Total Impressions": {
+          "current": 3645885,
+          "previous": 2007133,
+          "changePct": 81.65
+        }
+      },
+      "audience": {
+        "followersByPlatform": {
+          "facebook": {
+            "Followers": 38440,
+            "Followers diff. percent vs previous period": 1.43
+          },
+          "instagram": {
+            "Followers": 56856,
+            "Followers diff. percent vs previous period": 5.06
+          },
+          "twitter": {
+            "Followers": 187,
+            "Followers diff. percent vs previous period": -0.53
+          }
+        },
+        "followersDiffByPlatform": {
+          "facebook": {
+            "Followers diff": 541,
+            "Followers growth percent vs previous period": 1102.2
+          },
+          "instagram": {
+            "Followers diff": 2704,
+            "Followers growth percent vs previous period": 344.0
+          },
+          "twitter": {
+            "Followers diff": 0,
+            "Followers growth percent vs previous period": -100.0
+          }
+        }
+      },
+      "posts": {
+        "dates": [
+          "20 August 2026",
+          "21 August 2026",
+          "22 August 2026",
+          "23 August 2026",
+          "24 August 2026",
+          "25 August 2026",
+          "26 August 2026",
+          "27 August 2026",
+          "28 August 2026",
+          "29 August 2026",
+          "30 August 2026",
+          "31 August 2026",
+          "01 September 2026",
+          "02 September 2026",
+          "03 September 2026",
+          "04 September 2026",
+          "05 September 2026",
+          "06 September 2026",
+          "07 September 2026",
+          "08 September 2026",
+          "09 September 2026",
+          "10 September 2026",
+          "11 September 2026",
+          "12 September 2026",
+          "13 September 2026",
+          "14 September 2026",
+          "15 September 2026",
+          "16 September 2026",
+          "17 September 2026",
+          "18 September 2026"
+        ],
+        "dailyByPlatform": {
+          "facebook": [
+            7,
+            6,
+            5,
+            10,
+            7,
+            9,
+            15,
+            8,
+            6,
+            11,
+            12,
+            7,
+            7,
+            5,
+            8,
+            6,
+            6,
+            10,
+            5,
+            1,
+            5,
+            8,
+            5,
+            2,
+            2,
+            4,
+            8,
+            3,
+            7,
+            1
+          ],
+          "instagram": [
+            3,
+            3,
+            1,
+            0,
+            3,
+            2,
+            1,
+            1,
+            3,
+            5,
+            2,
+            5,
+            4,
+            2,
+            3,
+            3,
+            6,
+            4,
+            3,
+            1,
+            4,
+            4,
+            3,
+            1,
+            3,
+            2,
+            2,
+            2,
+            4,
+            0
+          ],
+          "twitter": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            4,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Posts": 196,
+            "Vs previous period": 51.94
+          },
+          "instagram": {
+            "Posts": 80,
+            "Vs previous period": 63.27
+          },
+          "twitter": {
+            "Posts": 16,
+            "Vs previous period": 14.29
+          }
+        }
+      },
+      "engagement": {
+        "dailyByPlatform": {
+          "facebook": [
+            326,
+            2166,
+            260,
+            321,
+            483,
+            408,
+            502,
+            322,
+            588,
+            343,
+            648,
+            423,
+            1624,
+            321,
+            637,
+            1016,
+            6145,
+            588,
+            719,
+            280,
+            2114,
+            943,
+            660,
+            192,
+            273,
+            348,
+            427,
+            229,
+            400,
+            11
+          ],
+          "instagram": [
+            1302,
+            6727,
+            2284,
+            0,
+            2019,
+            2536,
+            1392,
+            1564,
+            3430,
+            3742,
+            6507,
+            2507,
+            10312,
+            2633,
+            3841,
+            5644,
+            52516,
+            4219,
+            6297,
+            2258,
+            5172,
+            5823,
+            3017,
+            417,
+            2473,
+            991,
+            1184,
+            869,
+            1616,
+            0
+          ],
+          "twitter": [
+            1,
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            47,
+            12,
+            4,
+            0,
+            0,
+            0,
+            17,
+            14,
+            16,
+            0,
+            0,
+            0,
+            0,
+            0,
+            44,
+            48,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Engagement": 23717,
+            "Vs previous period": 27.97
+          },
+          "instagram": {
+            "Engagement": 143292,
+            "Vs previous period": 69.13
+          },
+          "twitter": {
+            "Engagement": 218,
+            "Vs previous period": 78.69
+          }
+        },
+        "rateByPlatform": {
+          "facebook": {
+            "Engagement rate": 0.315,
+            "Vs previous period": -16.96
+          },
+          "instagram": {
+            "Engagement rate": 3.15,
+            "Vs previous period": -1.4
+          },
+          "twitter": {
+            "Engagement rate": 7.286,
+            "Vs previous period": 57.19
+          }
+        }
+      },
+      "views": {
+        "dailyByPlatform": {
+          "facebook": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "instagram": [
+            22644,
+            145879,
+            41947,
+            0,
+            64058,
+            53229,
+            27720,
+            29434,
+            54999,
+            79111,
+            138753,
+            58173,
+            200131,
+            51952,
+            94775,
+            120262,
+            881051,
+            106591,
+            61084,
+            73223,
+            88110,
+            121042,
+            62340,
+            12012,
+            43009,
+            13979,
+            24418,
+            22403,
+            24675,
+            0
+          ],
+          "twitter": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Views": 926035,
+            "Views diff. percent vs previous period": 116.98
+          },
+          "instagram": {
+            "Views": 2717004,
+            "Views diff. percent vs previous period": 72.19
+          },
+          "twitter": {
+            "Views": 2846,
+            "Views diff. percent vs previous period": 17.02
+          }
+        }
+      },
+      "videoViews": {
+        "dailyByPlatform": {
+          "facebook": [
+            0,
+            48550,
+            0,
+            0,
+            6946,
+            4953,
+            3276,
+            0,
+            0,
+            5747,
+            8358,
+            16516,
+            20958,
+            0,
+            2480,
+            0,
+            115741,
+            20331,
+            22854,
+            11622,
+            64049,
+            31014,
+            24524,
+            5205,
+            0,
+            0,
+            0,
+            7744,
+            2175,
+            0
+          ],
+          "instagram": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "twitter": [
+            0,
+            211,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            140,
+            0,
+            0,
+            0,
+            0,
+            0,
+            162,
+            0,
+            0,
+            0,
+            0,
+            268,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            65,
+            79,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Video Views": 423043,
+            "Video views diff. percent vs previous period": 142.25
+          },
+          "instagram": {
+            "Video Views": 2629909,
+            "Video views diff. percent vs previous period": 75
+          },
+          "twitter": {
+            "Video Views": 925,
+            "Video views diff. percent vs previous period": 59.48
+          }
+        }
+      },
+      "topPosts": [
+        {
+          "page": "Vemula Veeresham",
+          "link": "https://www.instagram.com/reel/Dc6Ao7MyxP7/",
+          "date": "05 Sep",
+          "type": "reel",
+          "engagement": 16295,
+          "engagementRate": 28.6601
+        },
+        {
+          "page": "Vemula Veeresham",
+          "link": "https://www.instagram.com/reel/Dc6aB8EyQWZ/",
+          "date": "05 Sep",
+          "type": "reel",
+          "engagement": 14694,
+          "engagementRate": 25.8442
+        },
+        {
+          "page": "Vemula Veeresham",
+          "link": "https://www.instagram.com/reel/Dc5Iwxfy-Hs/",
+          "date": "05 Sep",
+          "type": "reel",
+          "engagement": 10214,
+          "engagementRate": 17.9647
+        },
+        {
+          "page": "Vemula Veeresham",
+          "link": "https://www.instagram.com/reel/Dcvw5_Ly891/",
+          "date": "01 Sep",
+          "type": "reel",
+          "engagement": 5593,
+          "engagementRate": 9.8371
+        },
+        {
+          "page": "Vemula Veeresham",
+          "link": "https://www.instagram.com/reel/DcpdQ8Ey_5B/",
+          "date": "30 Aug",
+          "type": "reel",
+          "engagement": 4493,
+          "engagementRate": 7.9024
+        },
+        {
+          "page": "Vemula Veeresham",
+          "link": "https://www.facebook.com/1194424672693860/posts/1685645940238395",
+          "date": "05 Sep",
+          "type": "link",
+          "engagement": 1997,
+          "engagementRate": 5.1951
+        },
+        {
+          "page": "Vemula Veeresham",
+          "link": "https://www.facebook.com/reel/1466983161934742/",
+          "date": "05 Sep",
+          "type": "reel",
+          "engagement": 1683,
+          "engagementRate": 4.3783
+        },
+        {
+          "page": "Vemula Veeresham",
+          "link": "https://www.facebook.com/reel/1084663884019258/",
+          "date": "05 Sep",
+          "type": "reel",
+          "engagement": 1580,
+          "engagementRate": 4.1103
+        },
+        {
+          "page": "Vemula Veeresham",
+          "link": "https://www.facebook.com/reel/1065593303039062/",
+          "date": "09 Sep",
+          "type": "reel",
+          "engagement": 1452,
+          "engagementRate": 3.7773
+        },
+        {
+          "page": "Vemula Veeresham",
+          "link": "https://www.facebook.com/reel/1380857140152478/",
+          "date": "21 Aug",
+          "type": "reel",
+          "engagement": 1273,
+          "engagementRate": 3.3117
+        },
+        {
+          "page": "Vemula Veeresham",
+          "link": "https://www.twitter.com/Veeresham_MLA/status/2095013403391914016",
+          "date": "02 Sep",
+          "type": "photo",
+          "engagement": 47,
+          "engagementRate": 25.1337
+        },
+        {
+          "page": "Vemula Veeresham",
+          "link": "https://www.twitter.com/Veeresham_MLA/status/2100186907561099528",
+          "date": "16 Sep",
+          "type": "status",
+          "engagement": 33,
+          "engagementRate": 17.6471
+        }
+      ]
+    }
+  ]
+}
