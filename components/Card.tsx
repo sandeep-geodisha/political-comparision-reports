@@ -15,6 +15,8 @@ export function Card({
   className?: string;
   padded?: boolean;
 }) {
+  const hasHeader = Boolean(title || action);
+
   return (
     <div
       className={
@@ -23,8 +25,13 @@ export function Card({
         className
       }
     >
-      {(title || action) && (
-        <div className="mb-4 flex items-start justify-between gap-3">
+      {hasHeader && (
+        <div
+          className={
+            "flex items-start justify-between gap-3 " +
+            (padded ? "mb-4" : "mb-4 p-4 pb-0 sm:p-6 sm:pb-0")
+          }
+        >
           <div>
             {title && (
               <h3 className="text-sm font-semibold text-foreground sm:text-base">{title}</h3>

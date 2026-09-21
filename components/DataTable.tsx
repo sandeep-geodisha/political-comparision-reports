@@ -141,76 +141,79 @@ export function DataTable<T>({
         </div>
       )}
 
-      <div className="overflow-x-auto rounded-xl border border-border">
-        <table className="w-full min-w-[520px] text-sm">
-          <thead>
-            <tr className="border-b border-border bg-surface-alt text-left text-[11px] uppercase tracking-wide text-muted">
-              {columns.map((col) => (
-                <th
-                  key={col.key}
-                  onClick={() => toggleSort(col)}
-                  title={col.hint}
-                  className={
-                    "whitespace-nowrap px-3 py-2.5 font-semibold sm:px-4 " +
-                    (col.sortable ? "cursor-pointer select-none hover:text-foreground" : "") +
-                    (col.align === "right" ? " text-right" : "") +
-                    (col.hideOnMobile ? " hidden sm:table-cell" : "")
-                  }
-                >
-                  <span className="inline-flex items-center gap-1">
-                    {col.label}
-                    {col.sortable && sortKey === col.key && (
-                      <span className="text-brand">{asc ? "↑" : "↓"}</span>
-                    )}
-                  </span>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {pageRows.length === 0 ? (
-              <tr>
-                <td colSpan={columns.length} className="px-4 py-10 text-center text-sm text-muted">
-                  {emptyMessage}
-                </td>
-              </tr>
-            ) : (
-              pageRows.map((row, i) => {
-                const href = rowHref?.(row);
-                return (
-                  <tr
-                    key={getRowKey(row)}
+      <div className="relative overflow-hidden rounded-xl border border-border">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[320px] text-sm sm:min-w-[520px]">
+            <thead>
+              <tr className="border-b border-border bg-surface-alt text-left text-[11px] uppercase tracking-wide text-muted">
+                {columns.map((col) => (
+                  <th
+                    key={col.key}
+                    onClick={() => toggleSort(col)}
+                    title={col.hint}
                     className={
-                      "border-b border-border/70 last:border-0 " +
-                      (i % 2 === 1 ? "bg-surface-alt/60" : "") +
-                      (href ? " cursor-pointer hover:bg-brand-light/40" : "hover:bg-slate-50")
-                    }
-                    onClick={
-                      href
-                        ? () => {
-                            window.location.href = href;
-                          }
-                        : undefined
+                      "whitespace-nowrap px-3 py-2.5 font-semibold sm:px-4 " +
+                      (col.sortable ? "cursor-pointer select-none hover:text-foreground" : "") +
+                      (col.align === "right" ? " text-right" : "") +
+                      (col.hideOnMobile ? " hidden sm:table-cell" : "")
                     }
                   >
-                    {columns.map((col) => (
-                      <td
-                        key={col.key}
-                        className={
-                          "px-3 py-2.5 text-foreground sm:px-4 " +
-                          (col.align === "right" ? "text-right" : "") +
-                          (col.hideOnMobile ? " hidden sm:table-cell" : "")
-                        }
-                      >
-                        {col.render(row)}
-                      </td>
-                    ))}
-                  </tr>
-                );
-              })
-            )}
-          </tbody>
-        </table>
+                    <span className="inline-flex items-center gap-1">
+                      {col.label}
+                      {col.sortable && sortKey === col.key && (
+                        <span className="text-brand">{asc ? "↑" : "↓"}</span>
+                      )}
+                    </span>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {pageRows.length === 0 ? (
+                <tr>
+                  <td colSpan={columns.length} className="px-4 py-10 text-center text-sm text-muted">
+                    {emptyMessage}
+                  </td>
+                </tr>
+              ) : (
+                pageRows.map((row, i) => {
+                  const href = rowHref?.(row);
+                  return (
+                    <tr
+                      key={getRowKey(row)}
+                      className={
+                        "border-b border-border/70 last:border-0 " +
+                        (i % 2 === 1 ? "bg-surface-alt/60" : "") +
+                        (href ? " cursor-pointer hover:bg-brand-light/40" : "hover:bg-slate-50")
+                      }
+                      onClick={
+                        href
+                          ? () => {
+                              window.location.href = href;
+                            }
+                          : undefined
+                      }
+                    >
+                      {columns.map((col) => (
+                        <td
+                          key={col.key}
+                          className={
+                            "px-3 py-2.5 text-foreground sm:px-4 " +
+                            (col.align === "right" ? "text-right" : "") +
+                            (col.hideOnMobile ? " hidden sm:table-cell" : "")
+                          }
+                        >
+                          {col.render(row)}
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })
+              )}
+            </tbody>
+          </table>
+        </div>
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-surface to-transparent sm:hidden" />
       </div>
 
       {totalPages > 1 && (

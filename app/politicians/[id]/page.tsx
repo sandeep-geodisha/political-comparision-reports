@@ -8,15 +8,11 @@ import {
   getPdfSupplement,
   getPolitician,
   getPoliticians,
-  isDailySeriesReliable,
-  reliablePlatformsFor,
 } from "@/lib/data";
 import { colorForId } from "@/lib/colors";
 import { Avatar } from "@/components/Avatar";
 import { Card, StatTile } from "@/components/Card";
-import { ChangeBadge } from "@/components/ChangeBadge";
 import { DonutChart } from "@/components/charts/DonutChart";
-import { TrendChart } from "@/components/charts/TrendChart";
 import { TopPostsTable } from "@/components/TopPostsTable";
 import { InsightsCard } from "@/components/InsightsCard";
 import { ContentPillarsSection } from "@/components/ContentPillarsSection";
@@ -50,47 +46,6 @@ export default async function PoliticianPage({
     value: politician.engagement.totalByPlatform[pl]?.Engagement ?? 0,
     color: PLATFORM_COLORS[pl],
   })).filter((d) => d.value > 0);
-
-  const postsSeries = politician.posts.dates.map((date, i) => {
-    const row: Record<string, string | number> = { date: date.slice(0, 6) };
-    for (const pl of PLATFORMS) {
-      row[pl] = politician.posts.dailyByPlatform[pl]?.[i] ?? 0;
-    }
-    return row;
-  });
-
-  const engagementSeries = politician.posts.dates.map((date, i) => {
-    const row: Record<string, string | number> = { date: date.slice(0, 6) };
-    for (const pl of PLATFORMS) {
-      row[pl] = politician.engagement.dailyByPlatform[pl]?.[i] ?? 0;
-    }
-    return row;
-  });
-
-  const viewsReliablePlatforms = reliablePlatformsFor(politician, "views").filter(
-    (pl) => (politician.posts.totalByPlatform[pl]?.Posts ?? 0) > 0
-  );
-  const viewsSeries = politician.posts.dates.map((date, i) => {
-    const row: Record<string, string | number> = { date: date.slice(0, 6) };
-    for (const pl of viewsReliablePlatforms) {
-      row[pl] = politician.views.dailyByPlatform[pl]?.[i] ?? 0;
-    }
-    return row;
-  });
-  const viewsSeriesDefs = viewsReliablePlatforms.map((pl) => ({
-    key: pl,
-    label: PLATFORM_LABELS[pl],
-    color: PLATFORM_COLORS[pl],
-  }));
-  const viewsUnreliablePlatforms = PLATFORMS.filter(
-    (pl) =>
-      (politician.posts.totalByPlatform[pl]?.Posts ?? 0) > 0 &&
-      !isDailySeriesReliable(politician, "views", pl)
-  );
-
-  const platformSeries = PLATFORMS.filter(
-    (pl) => (politician.posts.totalByPlatform[pl]?.Posts ?? 0) > 0
-  ).map((pl) => ({ key: pl, label: PLATFORM_LABELS[pl], color: PLATFORM_COLORS[pl] }));
 
   const kpiOrder = [
     {
@@ -136,20 +91,6 @@ export default async function PoliticianPage({
       metric: supplement?.keyMetrics.brandComments,
     },
     {
-      key: "Avg Posts / Day",
-      label: "Avg. posts / day",
-      hint: "Average number of posts published per day this period",
-      accent: "#f59e0b",
-      metric: politician.kpis["Avg Posts / Day"],
-    },
-    {
-      key: "Avg Engagement",
-      label: "Avg. engagement / post",
-      hint: "Average engagement received per post this period",
-      accent: "#10b981",
-      metric: politician.kpis["Avg Engagement"],
-    },
-    {
       key: "Total Video Views",
       label: "Video views",
       hint: "Total views on video content across all platforms",
@@ -169,7 +110,7 @@ export default async function PoliticianPage({
     <div className="flex flex-col gap-6 sm:gap-8">
       <div>
         <Link href="/" className="mb-3 inline-flex items-center gap-1 text-xs font-medium text-muted hover:text-foreground sm:text-sm">
-          ← Back to overview
+          ← Back to compare
         </Link>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3 sm:gap-4">
@@ -178,11 +119,10 @@ export default async function PoliticianPage({
               <h1 className="truncate text-xl font-bold tracking-tight text-foreground sm:text-2xl">
                 {politician.name}
               </h1>
-              <p className="mt-0.5 text-xs text-muted sm:text-sm">{politician.dateRange}</p>
             </div>
           </div>
           <Link
-            href={`/compare?ids=${politician.id}`}
+            href={`/?ids=${politician.id}`}
             className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-r from-brand to-brand-dark px-4 py-2 text-xs font-semibold text-white shadow-sm shadow-brand/30 transition-transform hover:scale-[1.02] active:scale-[0.98] sm:text-sm"
           >
             Compare this politician
@@ -236,8 +176,7 @@ export default async function PoliticianPage({
           Key performance indicators
         </h2>
         <p className="mb-3 text-sm text-muted">
-          Combined totals across Facebook, Instagram and Twitter for {politician.dateRange}.
-          Badges show the change vs. the previous period of the same length.
+          Combined totals across Facebook, Instagram and Twitter.
         </p>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {kpiOrder.map(({ key, label, hint, accent, metric }) => {
@@ -248,7 +187,6 @@ export default async function PoliticianPage({
                 label={label}
                 hint={hint}
                 value={formatCompactNumber(metric.current)}
-                change={<ChangeBadge value={metric.changePct} />}
                 accent={accent}
               />
             );
@@ -286,37 +224,6 @@ export default async function PoliticianPage({
           </div>
         </Card>
       </div>
-
-      <Card title="Posts over time" subtitle="Daily posts per channel">
-        <TrendChart data={postsSeries} series={platformSeries} />
-      </Card>
-
-      <Card title="Engagement over time" subtitle="Daily engagement per channel">
-        <TrendChart data={engagementSeries} series={platformSeries} />
-      </Card>
-
-      <Card title="Views over time" subtitle="Daily views per channel">
-        {viewsUnreliablePlatforms.length > 0 && (
-          <div className="mb-4 flex items-start gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2.5 text-xs text-amber-800">
-            <svg
-              className="mt-0.5 h-3.5 w-3.5 shrink-0"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path d="M12 9v4M12 17h.01M10.29 3.86l-8.18 14.18A2 2 0 004 21h16a2 2 0 001.89-2.96L13.71 3.86a2 2 0 00-3.42 0z" />
-            </svg>
-            <span>
-              {viewsUnreliablePlatforms.map((pl) => PLATFORM_LABELS[pl]).join(" and ")} daily
-              view data isn&rsquo;t fully reported by the source for this period, so{" "}
-              {viewsUnreliablePlatforms.length > 1 ? "they are" : "it is"} excluded from this
-              chart. See the accurate totals in the KPIs and platform breakdown above.
-            </span>
-          </div>
-        )}
-        <TrendChart data={viewsSeries} series={viewsSeriesDefs} />
-      </Card>
 
       <div>
         <h2 className="mb-1 text-lg font-bold text-foreground sm:text-xl">Top posts</h2>

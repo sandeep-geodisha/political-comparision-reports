@@ -23,7 +23,7 @@ export function PoliticianPicker({
     const params = new URLSearchParams(searchParams.toString());
     if (next.length) params.set("ids", next.join(","));
     else params.delete("ids");
-    router.push(`/compare?${params.toString()}`);
+    router.push(`/?${params.toString()}`);
   }
 
   return (

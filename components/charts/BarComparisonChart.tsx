@@ -48,7 +48,7 @@ export function BarComparisonChart({
         <BarChart
           data={data}
           layout={horizontal ? "vertical" : "horizontal"}
-          margin={{ top: 4, right: 8, left: horizontal ? 16 : -16, bottom: 0 }}
+          margin={{ top: 4, right: 8, left: horizontal ? 16 : 0, bottom: 0 }}
           barGap={4}
           barCategoryGap={data.length <= 2 ? "20%" : "10%"}
         >

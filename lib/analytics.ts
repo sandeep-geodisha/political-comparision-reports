@@ -1,7 +1,6 @@
 import {
   PLATFORMS,
   PLATFORM_LABELS,
-  getPdfSupplement,
   reliablePlatformsFor,
   totalEngagement,
   totalFollowers,
@@ -185,59 +184,16 @@ export function rankByMetric(
 export const FIELD_METRICS = [
   { key: "followers", label: "Total followers", fn: totalFollowers, format: "compact" as const },
   { key: "engagement", label: "Total engagement", fn: totalEngagement, format: "compact" as const },
-  { key: "engagementPerPost", label: "Engagement per post", fn: engagementPerPost, format: "compact" as const },
   {
-    key: "engagementPerFollower",
-    label: "Engagement per follower",
-    fn: engagementPerFollowerPct,
-    format: "percent" as const,
+    key: "engagementPerPost",
+    label: "Engagement per post",
+    fn: engagementPerPost,
+    format: "compact" as const,
+    hint: "Average likes, comments, shares and reactions on a single post (total engagement divided by total posts)",
   },
   { key: "views", label: "Total views", fn: totalViews, format: "compact" as const },
   { key: "posts", label: "Total posts", fn: totalPosts, format: "compact" as const },
 ] as const;
-
-// ---------------------------------------------------------------------------
-// Content strategy cross-comparison — merges each politician's PDF-sourced
-// content pillars into a field-wide view.
-// ---------------------------------------------------------------------------
-
-export interface FieldContentPillar {
-  name: string;
-  totalPosts: number;
-  totalEngagement: number;
-  avgEngagementPerPost: number;
-  byPolitician: { politicianId: string; name: string; posts: number; engagement: number }[];
-}
-
-export function fieldContentPillars(politicians: Politician[]): FieldContentPillar[] {
-  const byName = new Map<string, FieldContentPillar>();
-
-  for (const p of politicians) {
-    const supplement = getPdfSupplement(p.id);
-    if (!supplement) continue;
-    for (const pillar of supplement.contentPillars) {
-      let entry = byName.get(pillar.name);
-      if (!entry) {
-        entry = { name: pillar.name, totalPosts: 0, totalEngagement: 0, avgEngagementPerPost: 0, byPolitician: [] };
-        byName.set(pillar.name, entry);
-      }
-      entry.totalPosts += pillar.posts;
-      entry.totalEngagement += pillar.engagement;
-      entry.byPolitician.push({
-        politicianId: p.id,
-        name: p.name,
-        posts: pillar.posts,
-        engagement: pillar.engagement,
-      });
-    }
-  }
-
-  const result = Array.from(byName.values());
-  for (const entry of result) {
-    entry.avgEngagementPerPost = entry.totalPosts > 0 ? entry.totalEngagement / entry.totalPosts : 0;
-  }
-  return result.sort((a, b) => b.avgEngagementPerPost - a.avgEngagementPerPost);
-}
 
 // ---------------------------------------------------------------------------
 // Narrative summary — every sentence states a specific number pulled
@@ -265,15 +221,16 @@ export function buildComparisonNarrative(politicians: Politician[]): string[] {
 
   if (byEngPerPost[0].politicianId !== byFollowers[0].politicianId) {
     paragraphs.push(
-      `Audience size doesn't track with content performance: ${byEngPerPost[0].name} earns the most ` +
-        `engagement per post in the field at ${Math.round(byEngPerPost[0].value).toLocaleString()}, despite ` +
-        `${byFollowers[0].name} having the larger following.`
+      `A bigger audience doesn't mean better content performance. ${byEngPerPost[0].name} earns the most ` +
+        `engagement per post in the field at ${Math.round(byEngPerPost[0].value).toLocaleString()}, even though ` +
+        `${byFollowers[0].name} has more followers.`
     );
   }
 
   paragraphs.push(
-    `By engagement per follower — a measure of how actively an audience interacts, independent of its size — ` +
-      `${byEngPerFollower[0].name} leads at ${byEngPerFollower[0].value.toFixed(2)}%.`
+    `${byEngPerFollower[0].name} has the highest engagement per follower at ` +
+      `${byEngPerFollower[0].value.toFixed(2)}%. This shows how actively an audience interacts, ` +
+      `regardless of its size.`
   );
 
   const spikes = politicians
@@ -287,7 +244,7 @@ export function buildComparisonNarrative(politicians: Politician[]): string[] {
         `${top.spike.matchingTopPost.engagement.toLocaleString()} engagements`
       : "";
     paragraphs.push(
-      `${top.p.name}'s single highest-engagement day in the period was ${top.spike.date}, ` +
+      `${top.p.name}'s single highest engagement day in the period was ${top.spike.date}, ` +
         `${Math.round(top.spike.vsAverage)}% above their own daily average${postNote}.`
     );
   }

@@ -34,7 +34,6 @@ export function EarnedMediaValueSection({
                 <tr className="text-left text-[11px] uppercase tracking-wide text-muted">
                   <th className="py-1.5 font-semibold">Channel</th>
                   <th className="py-1.5 text-right font-semibold">EMV</th>
-                  <th className="py-1.5 text-right font-semibold">Avg. EMV / post</th>
                 </tr>
               </thead>
               <tbody>
@@ -52,18 +51,12 @@ export function EarnedMediaValueSection({
                     <td className="py-2 text-right font-semibold text-foreground">
                       {formatCompactNumber(byChannel[pl].value)}
                     </td>
-                    <td className="py-2 text-right text-muted">
-                      {formatCompactNumber(byChannel[pl].avgValue)}
-                    </td>
                   </tr>
                 ))}
                 <tr className="border-t border-border bg-surface-alt/60">
                   <td className="py-2 font-semibold text-foreground">Total</td>
                   <td className="py-2 text-right font-bold text-foreground">
                     {formatCompactNumber(total.value)}
-                  </td>
-                  <td className="py-2 text-right font-medium text-muted">
-                    {formatCompactNumber(total.avgValue)}
                   </td>
                 </tr>
               </tbody>

@@ -136,19 +136,3 @@ export function formatCompactNumber(n: number): string {
   );
 }
 
-export function formatSignedPct(n: number | null | undefined): string {
-  if (n === null || n === undefined || Number.isNaN(n)) return "—";
-  const sign = n > 0 ? "+" : "";
-  return `${sign}${n.toFixed(2)}%`;
-}
-
-export const RANK_METRICS = [
-  { key: "followers", label: "Total Followers", fn: totalFollowers },
-  { key: "engagement", label: "Total Engagement", fn: totalEngagement },
-  { key: "posts", label: "Total Posts", fn: totalPosts },
-  { key: "views", label: "Total Views", fn: totalViews },
-  { key: "videoViews", label: "Total Video Views", fn: totalVideoViews },
-  { key: "engagementRate", label: "Avg Engagement Rate", fn: avgEngagementRate },
-] as const;
-
-export type RankMetricKey = (typeof RANK_METRICS)[number]["key"];

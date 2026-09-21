@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import type { TopPost } from "@/lib/types";
 import { formatCompactNumber } from "@/lib/data";
 import { DataTable, type DataTableColumn, type FilterChip } from "@/components/DataTable";
+import { PostEmbedModal } from "@/components/PostEmbedModal";
 
 const TYPE_COLORS: Record<string, string> = {
   reel: "#ec4899",
@@ -16,6 +17,7 @@ const TYPE_COLORS: Record<string, string> = {
 export function TopPostsTable({ posts }: { posts: TopPost[] }) {
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState("all");
+  const [activePost, setActivePost] = useState<TopPost | null>(null);
 
   const types = useMemo(() => Array.from(new Set(posts.map((p) => p.type))), [posts]);
   const chips: FilterChip[] = [
@@ -48,6 +50,15 @@ export function TopPostsTable({ posts }: { posts: TopPost[] }) {
       hideOnMobile: true,
     },
     {
+      key: "engagement",
+      label: "Engagement",
+      hint: "Total likes, comments and shares this post received",
+      sortable: true,
+      align: "right",
+      sortValue: (p) => p.engagement,
+      render: (p) => <span className="font-bold text-foreground">{formatCompactNumber(p.engagement)}</span>,
+    },
+    {
       key: "type",
       label: "Post type",
       hint: "The format of the post — image, video, reel, etc.",
@@ -64,15 +75,7 @@ export function TopPostsTable({ posts }: { posts: TopPost[] }) {
           {p.type.replace(/_/g, " ")}
         </span>
       ),
-    },
-    {
-      key: "engagement",
-      label: "Engagement",
-      hint: "Total likes, comments and shares this post received",
-      sortable: true,
-      align: "right",
-      sortValue: (p) => p.engagement,
-      render: (p) => <span className="font-bold text-foreground">{formatCompactNumber(p.engagement)}</span>,
+      hideOnMobile: true,
     },
     {
       key: "engagementRate",
@@ -86,36 +89,43 @@ export function TopPostsTable({ posts }: { posts: TopPost[] }) {
     },
     {
       key: "link",
-      label: "Link",
-      hint: "Open the original post",
+      label: "Post",
+      hint: "Watch or view this post without leaving the page",
       align: "right",
       render: (p) => (
-        <a
-          href={p.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            setActivePost(p);
+          }}
           className="inline-flex items-center gap-1 whitespace-nowrap font-semibold text-brand hover:text-brand-dark hover:underline"
         >
-          View <span aria-hidden>→</span>
-        </a>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          View
+        </button>
       ),
     },
   ];
 
   return (
-    <DataTable
-      rows={filtered}
-      columns={columns}
-      getRowKey={(p) => p.link}
-      searchPlaceholder="Search by page…"
-      searchValue={search}
-      onSearchChange={setSearch}
-      filterChips={chips}
-      activeFilter={typeFilter}
-      onFilterChange={setTypeFilter}
-      initialSortKey="engagement"
-      pageSize={8}
-    />
+    <>
+      <DataTable
+        rows={filtered}
+        columns={columns}
+        getRowKey={(p) => p.link}
+        searchPlaceholder="Search by page…"
+        searchValue={search}
+        onSearchChange={setSearch}
+        filterChips={chips}
+        activeFilter={typeFilter}
+        onFilterChange={setTypeFilter}
+        initialSortKey="engagement"
+        pageSize={8}
+      />
+      {activePost && <PostEmbedModal post={activePost} onClose={() => setActivePost(null)} />}
+    </>
   );
 }

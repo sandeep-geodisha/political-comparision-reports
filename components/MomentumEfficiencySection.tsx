@@ -22,7 +22,7 @@ export function MomentumEfficiencySection({
     <div>
       <h2 className="mb-1 text-lg font-bold text-foreground sm:text-xl">Content efficiency</h2>
       <p className="mb-3 text-sm text-muted">
-        How much engagement each campaign earns per post and per follower — a read on content
+        How much engagement each campaign earns per post and per follower   a read on content
         quality that doesn&rsquo;t just reward posting more.
       </p>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
@@ -62,7 +62,7 @@ export function MomentumEfficiencySection({
                   {spike.matchingTopPost && (
                     <>
                       {" "}
-                      — driven by a{" "}
+                        driven by a{" "}
                       <a
                         href={spike.matchingTopPost.link}
                         target="_blank"
