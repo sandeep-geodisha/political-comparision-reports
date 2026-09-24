@@ -93,6 +93,58 @@
         },
         "total": { "value": 17280, "avgValue": 576.13 }
       }
+    },
+    "gadari-kishor-kumar": {
+      "keyMetrics": {
+        "brandComments": { "current": 635, "changePct": 245.11 },
+        "brandLikes": { "current": 16700, "changePct": 167.87 },
+        "brandGrowthOfFollowers": { "current": 82, "changePct": 485.71 }
+      },
+      "insightsSummary": [
+        "The brand published 108 posts: 64 on Facebook and 44 on Twitter. Content drove 18,013 engagements, including 16,026 on Facebook and 1,987 on Twitter.",
+        "Posts generated 528,807 impressions, with Facebook contributing 496,127 and Twitter 32,680. The brand ended with 54,659 followers: 50,047 on Facebook and 4,612 on Twitter, with growth rates of 0.15% overall, 0.10% on Facebook, and 0.68% on Twitter.",
+        "Total video views reached 258,857, driven by 245,378 Facebook views and 13,479 Twitter views. Facebook outperformed on scale, while Twitter showed stronger follower growth and a higher engagement rate per page at 43.08% versus Facebook's 32.02%."
+      ],
+      "observations": [
+        "Prioritize Facebook for reach and engagement because 64 posts generated 16,026 engagements and 496,127 impressions, compared with Twitter's 44 posts, 1,987 engagements, and 32,680 impressions.",
+        "Replicate the strongest video approach on Facebook: 1 video generated 245,378 views, representing nearly all 258,857 total video views, while Twitter contributed 13,479.",
+        "Study the content formats driving Facebook's 250.41 average engagements per post and 5.36% engagement rate by impression, then adapt those formats for higher-impact publishing."
+      ],
+      "contentPillars": [
+        { "name": "Debate Highlights & Analysis", "posts": 4, "engagement": 1111, "avgEngagementRate": 0.55, "topChannel": "facebook" },
+        { "name": "Candidate Profiles & Campaign Updates", "posts": 3, "engagement": 296, "avgEngagementRate": 0.2, "topChannel": "facebook" },
+        { "name": "Community Voices & Initiatives", "posts": 3, "engagement": 554, "avgEngagementRate": 0.37, "topChannel": "facebook" },
+        { "name": "Fact-Checking & Accuracy", "posts": 3, "engagement": 563, "avgEngagementRate": 0.37, "topChannel": "facebook" }
+      ],
+      "earnedMediaValue": {
+        "byChannel": {
+          "facebook": { "value": 13673, "avgValue": 455.77 },
+          "twitter": { "value": 1177, "avgValue": 39.23 }
+        },
+        "total": { "value": 14850, "avgValue": 495 }
+      },
+      "instagramSupplement": {
+        "dateRange": "23 August 2026 - 21 September 2026",
+        "handle": "dr.gadarikishorekumar",
+        "followers": 34200,
+        "posts": 83,
+        "views": 340170,
+        "avgPostsPerDay": 2.77,
+        "avgViewsPerPost": 4098,
+        "engagement": {
+          "total": 61946,
+          "avgPerPost": 746,
+          "caveat": "As reported in the source file. Its day-by-day engagement breakdown summed to roughly 3.4x this total and included one single-day figure larger than every other day combined, so this total (and the per-post average derived from it) could not be independently cross-checked the way every other number on this page was."
+        },
+        "note": "Covers a different 30-day window (Aug 23 - Sep 21) than this politician's Facebook/Twitter data and every other politician's totals (Aug 20 - Sep 18), so it is shown separately here rather than folded into combined totals or field rankings.",
+        "topPosts": [
+          { "link": "https://www.instagram.com/p/Dc_dTqKzXm8/", "date": "07 Sep", "type": "video", "engagement": 21352 },
+          { "link": "https://www.instagram.com/p/Dc08JLizA_l/", "date": "03 Sep", "type": "video", "engagement": 12279 },
+          { "link": "https://www.instagram.com/p/DcvzqO0TVRT/", "date": "01 Sep", "type": "video", "engagement": 2023 },
+          { "link": "https://www.instagram.com/p/DcyQIYFzE8F/", "date": "02 Sep", "type": "video", "engagement": 1938 },
+          { "link": "https://www.instagram.com/p/DdQ8UmPk36T/", "date": "14 Sep", "type": "carousel_album", "engagement": 1603 }
+        ]
+      }
     }
   }
 }

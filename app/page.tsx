@@ -16,6 +16,7 @@ import { InsightsCard } from "@/components/InsightsCard";
 import { FieldRankingsCard } from "@/components/FieldRankingsCard";
 import { MomentumEfficiencySection } from "@/components/MomentumEfficiencySection";
 import { PlatformStrategySection } from "@/components/PlatformStrategySection";
+import type { Politician } from "@/lib/types";
 
 export default async function ComparePage({
   searchParams,
@@ -23,7 +24,7 @@ export default async function ComparePage({
   searchParams: Promise<{ ids?: string }>;
 }) {
   const { ids } = await searchParams;
-  const politicians = getPoliticians();
+  const politicians = getPoliticians().filter((p) => p.id !== "chamala-kiran-reddy");
   const allIds = politicians.map((p) => p.id);
 
   const requestedIds = ids ? ids.split(",").filter(Boolean) : [];
@@ -35,15 +36,29 @@ export default async function ComparePage({
 
   const barSeriesDefs = selected.map((p) => ({ key: p.id, label: p.name, color: colors[p.id] }));
 
+  const supplements = Object.fromEntries(selected.map((p) => [p.id, getPdfSupplement(p.id)]));
+
+  function instagramFollowers(p: Politician): number {
+    return p.audience.followersByPlatform.instagram?.Followers ?? supplements[p.id]?.instagramSupplement?.followers ?? 0;
+  }
+  function instagramPosts(p: Politician): number {
+    return p.posts.totalByPlatform.instagram?.Posts ?? supplements[p.id]?.instagramSupplement?.posts ?? 0;
+  }
+  function instagramEngagement(p: Politician): number {
+    return (
+      p.engagement.totalByPlatform.instagram?.Engagement ??
+      supplements[p.id]?.instagramSupplement?.engagement.total ??
+      0
+    );
+  }
+
   const followersByPlatformData = PLATFORMS.map((pl) => {
     const row: Record<string, string | number> = { platform: PLATFORM_LABELS[pl] };
     for (const p of selected) {
-      row[p.id] = p.audience.followersByPlatform[pl]?.Followers ?? 0;
+      row[p.id] = pl === "instagram" ? instagramFollowers(p) : p.audience.followersByPlatform[pl]?.Followers ?? 0;
     }
     return row;
   });
-
-  const supplements = Object.fromEntries(selected.map((p) => [p.id, getPdfSupplement(p.id)]));
   const hasEmv = selected.some((p) => supplements[p.id]);
   const emvData = [
     {
@@ -214,9 +229,9 @@ export default async function ComparePage({
                 const rows = selected.map((p) => ({
                   id: p.id,
                   name: p.name,
-                  followers: p.audience.followersByPlatform[pl]?.Followers ?? 0,
-                  posts: p.posts.totalByPlatform[pl]?.Posts ?? 0,
-                  engagement: p.engagement.totalByPlatform[pl]?.Engagement ?? 0,
+                  followers: pl === "instagram" ? instagramFollowers(p) : p.audience.followersByPlatform[pl]?.Followers ?? 0,
+                  posts: pl === "instagram" ? instagramPosts(p) : p.posts.totalByPlatform[pl]?.Posts ?? 0,
+                  engagement: pl === "instagram" ? instagramEngagement(p) : p.engagement.totalByPlatform[pl]?.Engagement ?? 0,
                 }));
                 const hasData = rows.some((r) => r.followers || r.posts || r.engagement);
                 if (!hasData) return null;

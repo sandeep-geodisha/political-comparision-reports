@@ -33,6 +33,12 @@ function sumArr(vals: number[]): number {
   return vals.reduce((a, b) => a + (b || 0), 0);
 }
 
+function joinList(items: string[]): string {
+  if (items.length <= 1) return items.join("");
+  if (items.length === 2) return `${items[0]} and ${items[1]}`;
+  return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
+}
+
 // ---------------------------------------------------------------------------
 // Biggest single-day engagement spike — a factual observation ("this day was
 // N% above this candidate's own daily average"), tied to the specific post
@@ -212,10 +218,9 @@ export function buildComparisonNarrative(politicians: Politician[]): string[] {
   paragraphs.push(
     `${byFollowers[0].name} has the largest combined audience at ${Math.round(byFollowers[0].value).toLocaleString()} followers` +
       (byFollowers.length > 1
-        ? `, ahead of ${byFollowers
-            .slice(1)
-            .map((r) => `${r.name} (${Math.round(r.value).toLocaleString()})`)
-            .join(" and ")}.`
+        ? `, ahead of ${joinList(
+            byFollowers.slice(1).map((r) => `${r.name} (${Math.round(r.value).toLocaleString()})`)
+          )}.`
         : ".")
   );
 

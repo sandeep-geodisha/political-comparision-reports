@@ -17,6 +17,7 @@ import { TopPostsTable } from "@/components/TopPostsTable";
 import { InsightsCard } from "@/components/InsightsCard";
 import { ContentPillarsSection } from "@/components/ContentPillarsSection";
 import { EarnedMediaValueSection } from "@/components/EarnedMediaValueSection";
+import { InstagramSupplementSection } from "@/components/InstagramSupplementSection";
 
 export function generateStaticParams() {
   return getPoliticians().map((p) => ({ id: p.id }));
@@ -241,6 +242,13 @@ export default async function PoliticianPage({
         <EarnedMediaValueSection
           byChannel={supplement.earnedMediaValue.byChannel}
           total={supplement.earnedMediaValue.total}
+        />
+      )}
+
+      {supplement?.instagramSupplement && (
+        <InstagramSupplementSection
+          supplement={supplement.instagramSupplement}
+          politicianName={politician.name}
         />
       )}
     </div>

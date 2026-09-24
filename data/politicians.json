@@ -1399,6 +1399,525 @@
       ]
     },
     {
+      "id": "gadari-kishor-kumar",
+      "name": "Gadari Kishor Kumar",
+      "sourceFile": "Brand_Gadari_Kishor_Kumar_20_Aug_2026_18_Sep_2026_f259.xlsx",
+      "dateRange": "August,20 2026 - September,18 2026",
+      "profiles": [
+        {
+          "handle": "Dr.Gadari Kishore Kumar",
+          "platform": "twitter",
+          "followers": 4612,
+          "engagement": 1987,
+          "engagementRatePerFollower": 43.08326105810928,
+          "posts": 44
+        },
+        {
+          "handle": "Gadari Kishore Kumar",
+          "platform": "facebook",
+          "followers": 50047,
+          "engagement": 16026,
+          "engagementRatePerFollower": 32.021899414550326,
+          "posts": 64
+        }
+      ],
+      "kpis": {
+        "Posts": {
+          "current": 108,
+          "previous": 81,
+          "changePct": 33.33
+        },
+        "Engagement": {
+          "current": 18013,
+          "previous": 6606,
+          "changePct": 172.68
+        },
+        "Fans Count": {
+          "current": 54659,
+          "previous": 54574,
+          "changePct": 0.16
+        },
+        "Avg Posts / Day": {
+          "current": 3.6,
+          "previous": 2.7,
+          "changePct": 33.33
+        },
+        "Avg Engagement": {
+          "current": 295.57,
+          "previous": 148.82,
+          "changePct": 98.61
+        },
+        "Total Video Views": {
+          "current": 258857,
+          "previous": 36009,
+          "changePct": 618.87
+        },
+        "Total Impressions": {
+          "current": 528807,
+          "previous": 162897,
+          "changePct": 224.63
+        }
+      },
+      "audience": {
+        "followersByPlatform": {
+          "facebook": {
+            "Followers": 50047,
+            "Followers diff. percent vs previous period": 0.11
+          },
+          "twitter": {
+            "Followers": 4612,
+            "Followers diff. percent vs previous period": 0.7
+          }
+        },
+        "followersDiffByPlatform": {
+          "facebook": {
+            "Followers diff": 51,
+            "Followers growth percent vs previous period": 5000.0
+          },
+          "twitter": {
+            "Followers diff": 31,
+            "Followers growth percent vs previous period": 138.5
+          }
+        }
+      },
+      "posts": {
+        "dates": [
+          "20 August 2026",
+          "21 August 2026",
+          "22 August 2026",
+          "23 August 2026",
+          "24 August 2026",
+          "25 August 2026",
+          "26 August 2026",
+          "27 August 2026",
+          "28 August 2026",
+          "29 August 2026",
+          "30 August 2026",
+          "31 August 2026",
+          "01 September 2026",
+          "02 September 2026",
+          "03 September 2026",
+          "04 September 2026",
+          "05 September 2026",
+          "06 September 2026",
+          "07 September 2026",
+          "08 September 2026",
+          "09 September 2026",
+          "10 September 2026",
+          "11 September 2026",
+          "12 September 2026",
+          "13 September 2026",
+          "14 September 2026",
+          "15 September 2026",
+          "16 September 2026",
+          "17 September 2026",
+          "18 September 2026"
+        ],
+        "dailyByPlatform": {
+          "facebook": [
+            3,
+            1,
+            0,
+            1,
+            2,
+            0,
+            4,
+            7,
+            2,
+            0,
+            7,
+            2,
+            2,
+            4,
+            4,
+            6,
+            1,
+            1,
+            6,
+            1,
+            1,
+            4,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            3,
+            0
+          ],
+          "twitter": [
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            3,
+            4,
+            2,
+            0,
+            3,
+            0,
+            2,
+            3,
+            1,
+            4,
+            0,
+            1,
+            7,
+            2,
+            1,
+            2,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            3,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Posts": 64,
+            "Vs previous period": 36.17
+          },
+          "twitter": {
+            "Posts": 44,
+            "Vs previous period": 29.41
+          }
+        }
+      },
+      "engagement": {
+        "dailyByPlatform": {
+          "facebook": [
+            787,
+            82,
+            0,
+            82,
+            222,
+            0,
+            200,
+            473,
+            598,
+            0,
+            996,
+            365,
+            440,
+            1059,
+            3793,
+            385,
+            59,
+            83,
+            4706,
+            182,
+            19,
+            442,
+            0,
+            0,
+            0,
+            666,
+            0,
+            0,
+            387,
+            0
+          ],
+          "twitter": [
+            7,
+            8,
+            0,
+            8,
+            6,
+            0,
+            30,
+            46,
+            39,
+            0,
+            32,
+            0,
+            125,
+            79,
+            203,
+            43,
+            0,
+            17,
+            906,
+            126,
+            21,
+            76,
+            0,
+            0,
+            0,
+            127,
+            0,
+            0,
+            88,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Engagement": 16026,
+            "Vs previous period": 186.69
+          },
+          "twitter": {
+            "Engagement": 1987,
+            "Vs previous period": 95.57
+          }
+        },
+        "rateByPlatform": {
+          "facebook": {
+            "Engagement rate": 0.5,
+            "Vs previous period": 110.32
+          },
+          "twitter": {
+            "Engagement rate": 0.979,
+            "Vs previous period": 50.07
+          }
+        }
+      },
+      "views": {
+        "dailyByPlatform": {
+          "facebook": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "twitter": [
+            568,
+            637,
+            0,
+            646,
+            520,
+            0,
+            2600,
+            3892,
+            3362,
+            0,
+            2738,
+            0,
+            11242,
+            6446,
+            18421,
+            3552,
+            0,
+            1453,
+            75228,
+            10740,
+            1721,
+            6698,
+            0,
+            0,
+            0,
+            11274,
+            0,
+            0,
+            5304,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Views": 496127,
+            "Views diff. percent vs previous period": 246.84
+          },
+          "twitter": {
+            "Views": 32680,
+            "Views diff. percent vs previous period": 64.58
+          }
+        }
+      },
+      "videoViews": {
+        "dailyByPlatform": {
+          "facebook": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            13773,
+            9397,
+            4707,
+            7337,
+            77940,
+            0,
+            0,
+            0,
+            123331,
+            0,
+            0,
+            5890,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3003,
+            0
+          ],
+          "twitter": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            909,
+            0,
+            975,
+            610,
+            2236,
+            0,
+            0,
+            0,
+            7413,
+            0,
+            0,
+            600,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            736,
+            0
+          ]
+        },
+        "totalByPlatform": {
+          "facebook": {
+            "Video Views": 245378,
+            "Video views diff. percent vs previous period": 776.22
+          },
+          "twitter": {
+            "Video Views": 13479,
+            "Video views diff. percent vs previous period": 68.38
+          }
+        }
+      },
+      "topPosts": [
+        {
+          "page": "Gadari Kishore Kumar",
+          "link": "https://www.facebook.com/reel/2147288689534558/",
+          "date": "03 Sep",
+          "type": "reel",
+          "engagement": 3234,
+          "engagementRate": 6.4397
+        },
+        {
+          "page": "Gadari Kishore Kumar",
+          "link": "https://www.facebook.com/1169741707847734/videos/1600516194883623",
+          "date": "07 Sep",
+          "type": "video",
+          "engagement": 2805,
+          "engagementRate": 5.5854
+        },
+        {
+          "page": "Gadari Kishore Kumar",
+          "link": "https://www.facebook.com/1169741707847734/posts/1598119661676601",
+          "date": "07 Sep",
+          "type": "link",
+          "engagement": 883,
+          "engagementRate": 1.7583
+        },
+        {
+          "page": "Gadari Kishore Kumar",
+          "link": "https://www.facebook.com/1169741707847734/posts/1582332933255274",
+          "date": "20 Aug",
+          "type": "link",
+          "engagement": 617,
+          "engagementRate": 1.2286
+        },
+        {
+          "page": "Gadari Kishore Kumar",
+          "link": "https://www.facebook.com/1169741707847734/posts/1603852227770011",
+          "date": "14 Sep",
+          "type": "album",
+          "engagement": 582,
+          "engagementRate": 1.1589
+        },
+        {
+          "page": "Dr.Gadari Kishore Kumar",
+          "link": "https://www.twitter.com/DrGadariBRS/status/2096989495384297536",
+          "date": "07 Sep",
+          "type": "video",
+          "engagement": 482,
+          "engagementRate": 10.4442
+        },
+        {
+          "page": "Dr.Gadari Kishore Kumar",
+          "link": "https://www.twitter.com/DrGadariBRS/status/2095511574744084942",
+          "date": "03 Sep",
+          "type": "video",
+          "engagement": 203,
+          "engagementRate": 4.3987
+        },
+        {
+          "page": "Dr.Gadari Kishore Kumar",
+          "link": "https://www.twitter.com/DrGadariBRS/status/2096844108950315397",
+          "date": "07 Sep",
+          "type": "photo",
+          "engagement": 143,
+          "engagementRate": 3.0986
+        },
+        {
+          "page": "Dr.Gadari Kishore Kumar",
+          "link": "https://www.twitter.com/DrGadariBRS/status/2099448193645994013",
+          "date": "14 Sep",
+          "type": "photo",
+          "engagement": 100,
+          "engagementRate": 2.1668
+        },
+        {
+          "page": "Dr.Gadari Kishore Kumar",
+          "link": "https://www.twitter.com/DrGadariBRS/status/2097337008624750874",
+          "date": "08 Sep",
+          "type": "photo",
+          "engagement": 88,
+          "engagementRate": 1.9068
+        }
+      ]
+    },
+    {
       "id": "vemula-veeresham",
       "name": "Vemula Veeresham",
       "sourceFile": "Brand_Vemula_Veeresham_20_Aug_2026_18_Sep_2026_cd15 1.xlsx",

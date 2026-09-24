@@ -31,6 +31,18 @@ export function getPdfSupplement(id: string): PdfSupplement | undefined {
   return supplement.politicians[id];
 }
 
+/** Platforms with a tracked profile for this politician (not just zero activity). */
+export function trackedPlatforms(p: Politician): Platform[] {
+  return PLATFORMS.filter((pl) => p.profiles.some((profile) => profile.platform === pl));
+}
+
+/** Platforms tracked for at least one politician in the set but missing for this one. */
+export function untrackedPlatforms(p: Politician, allInSet: Politician[]): Platform[] {
+  const mine = new Set(trackedPlatforms(p));
+  const trackedAnywhere = new Set(allInSet.flatMap((x) => trackedPlatforms(x)));
+  return PLATFORMS.filter((pl) => trackedAnywhere.has(pl) && !mine.has(pl));
+}
+
 function sum(values: number[]): number {
   return values.reduce((a, b) => a + (b || 0), 0);
 }

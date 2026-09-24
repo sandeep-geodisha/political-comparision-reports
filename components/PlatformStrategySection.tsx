@@ -1,6 +1,6 @@
 import type { Politician } from "@/lib/types";
 import { dominantPlatform, platformShares, whitespaceOpportunity } from "@/lib/analytics";
-import { PLATFORM_COLORS, PLATFORM_LABELS } from "@/lib/data";
+import { PLATFORM_COLORS, PLATFORM_LABELS, untrackedPlatforms } from "@/lib/data";
 import { Avatar } from "@/components/Avatar";
 import { Card } from "@/components/Card";
 
@@ -23,7 +23,9 @@ export function PlatformStrategySection({
           const shares = platformShares(p);
           const dominant = dominantPlatform(p);
           const rivals = politicians.filter((x) => x.id !== p.id);
-          const gap = whitespaceOpportunity(p, rivals);
+          const missing = untrackedPlatforms(p, politicians);
+          const rawGap = whitespaceOpportunity(p, rivals);
+          const gap = rawGap && missing.includes(rawGap.platform) ? null : rawGap;
           const concentrated = Math.round(dominant.followerSharePct) >= 60;
 
           return (
@@ -69,7 +71,7 @@ export function PlatformStrategySection({
                   })}
               </div>
 
-              {concentrated && (
+              {concentrated && missing.length === 0 && (
                 <div className="mt-3 flex items-start gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2.5 text-xs text-amber-800">
                   <svg
                     className="mt-0.5 h-3.5 w-3.5 shrink-0"
@@ -84,6 +86,33 @@ export function PlatformStrategySection({
                     {Math.round(dominant.followerSharePct)}% of the audience is concentrated on{" "}
                     {PLATFORM_LABELS[dominant.platform]} — a single-platform disruption (algorithm
                     change, account issue) would hit this campaign hardest.
+                  </span>
+                </div>
+              )}
+
+              {missing.length > 0 && (
+                <div className="mt-3 flex items-start gap-2 rounded-xl border border-border bg-surface-alt px-3 py-2.5 text-xs text-muted">
+                  <svg
+                    className="mt-0.5 h-3.5 w-3.5 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path strokeLinecap="round" d="M12 16v-5" />
+                    <path strokeLinecap="round" d="M12 8h.01" />
+                  </svg>
+                  <span>
+                    <strong className="text-foreground">
+                      {missing.map((pl) => PLATFORM_LABELS[pl]).join(" and ")} not tracked:
+                    </strong>{" "}
+                    no Socialinsider data is available for this profile, so the shares above reflect
+                    only {shares
+                      .filter((s) => s.followerSharePct > 0)
+                      .map((s) => PLATFORM_LABELS[s.platform])
+                      .join(" and ")}
+                    , not a deliberate concentration strategy.
                   </span>
                 </div>
               )}
@@ -108,7 +137,7 @@ export function PlatformStrategySection({
                 </div>
               )}
 
-              {!concentrated && !gap && (
+              {!concentrated && !gap && missing.length === 0 && (
                 <div className="mt-2 flex items-start gap-2 rounded-xl border border-positive/20 bg-positive-bg px-3 py-2.5 text-xs text-positive">
                   <svg
                     className="mt-0.5 h-3.5 w-3.5 shrink-0"

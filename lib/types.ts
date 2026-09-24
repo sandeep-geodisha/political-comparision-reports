@@ -69,6 +69,35 @@ export interface PdfSupplement {
     byChannel: Record<string, EarnedMediaValueEntry>;
     total: EarnedMediaValueEntry;
   };
+  /**
+   * Separately-sourced Instagram data for a politician whose Instagram wasn't
+   * part of the main Socialinsider export (different date range, partial
+   * metrics only). Deliberately excluded from Politician totals/rankings
+   * since it isn't measured over the same period as the rest of the data —
+   * shown only on that politician's own detail page, labeled with its own
+   * date range.
+   */
+  instagramSupplement?: {
+    dateRange: string;
+    handle: string;
+    followers: number;
+    posts: number;
+    views: number;
+    avgPostsPerDay: number;
+    avgViewsPerPost: number;
+    engagement: {
+      total: number;
+      avgPerPost: number;
+      caveat: string;
+    };
+    note: string;
+    topPosts: {
+      link: string;
+      date: string;
+      type: string;
+      engagement: number;
+    }[];
+  };
 }
 
 export interface Politician {
